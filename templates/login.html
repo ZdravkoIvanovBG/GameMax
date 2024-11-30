@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <title>Login Page</title>
+    <style>
+        body,
+        html {
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Background Section */
+        .vh-100 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('assets/images/sign-up-background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Card Styling */
+        .card {
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgb(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(1.3px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .sign-in {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            color: #fff;
+        }
+
+        input.form-control.form-control-lg::placeholder {
+            color: white;
+            font-size: 16px;
+        }
+
+        p.mb-5 {
+            color: white !important;
+        }
+
+        .form-outline input:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .card-body .form-outline input {
+            color: #fff;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-color: rgb(226, 72, 96);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="vh-100">
+        <div class="button">
+            <a class="btn btn-primary px-4" href="index.html">Home</a>
+        </div>
+        <div class="card">
+            <div class="card-body p-4 p-lg-5 text-white">
+                <form action="/login" method="post">
+                    <h5 class="sign-in fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN INTO YOUR ACCOUNT</h5>
+                    <strong id="invalid-data-message" class="bg-blur rounded alert-danger" style="display: none;">
+                        Wrong username or password.
+                    </strong>
+
+                    <div class="form-outline mb-4">
+                        <input type="email" required name="email" id="form2Example17"
+                            class="form-control form-control-lg" placeholder="Email address" />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input required minlength="3" maxlength="20" type="password" name="password" id="form2Example27"
+                            class="form-control form-control-lg" placeholder="Password" />
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                    </div>
+
+                    <p class="mb-5 pb-lg-2" style="color: #d1d1d1;">Don't have an account? <a
+                            href="/sign-up.html">Register here</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

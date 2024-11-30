@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/external-css/external.css">
+    <style>
+        body {
+            background: url('https://via.placeholder.com/800x600') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+
+        .form-group input:disabled {
+            background: #555;
+        }
+
+        .avatar {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .avatar img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #fff;
+        }
+
+        .file-upload {
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px dashed #ff5252;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .file-upload label {
+            font-size: 14px;
+            color: #ff5252;
+            cursor: pointer;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .save-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ff5252;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background: #ff7979;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        <h2 class="text-white">Personal Information</h2>
+        <form>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="Full Name" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Age</label>
+                <input type="text" id="age" placeholder="Age" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Email Address" />
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" placeholder="Role" disabled />
+            </div>
+            <div class="form-group">
+                <label for="image-url">Image URL</label>
+                <input type="url" id="image-url" placeholder="Image URL" />
+            </div>
+            <div class="avatar">
+                <img src="assets/images/user.png" alt="User Avatar" />
+            </div>
+            <div class="file-upload">
+                <label for="file-upload">Click to upload a new photo. (Up to 5mb)</label>
+                <input type="file" id="file-upload" />
+            </div>
+            <button type="submit" class="save-button">Save</button>
+        </form>
+    </div>
+
+    </script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script> -->
+</body>
+
+</html>
