@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
 
+from GameMax.app_users.models import Profile
+
 UserModel = get_user_model()
 
 
@@ -43,3 +45,27 @@ class AppUserCreationForm(UserCreationForm):
 
         self.fields['password2'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Your Password'
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user',)
+
+        widgets = {
+            'full_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Full Name'
+                }
+            ),
+            'age': forms.TextInput(
+                attrs={
+                    'placeholder': 'Age'
+                }
+            ),
+            'phone_number': forms.TextInput(
+                attrs={
+                    'placeholder': 'Phone Number',
+                }
+            )
+        }
