@@ -58,51 +58,54 @@
                         <li><a href="#" class="fw-bold">Our Shop</a></li>
                         <li><a href="#" class="fw-bold">About Us</a></li>
                         <li><a href="#" class="fw-bold">Contact Us</a></li>
-                        <li class="profile-button-li">
-                            <button class="dropdown-toggle">
-                                <div class="user-icon"></div>
-                            </button>
-                            <div class="menu">
-                                <div class="profile-header">
-                                    <div class="profile-icon">
-                                        <img src="{% static 'assets/images/user.png' %}" alt="Profile">
+                        {% if request.user.is_authenticated %}
+                            <li class="profile-button-li">
+                                <button class="dropdown-toggle">
+                                    <div class="user-icon"></div>
+                                </button>
+                                <div class="menu">
+                                    <div class="profile-header">
+                                        <div class="profile-icon">
+                                            <img src="{% static 'assets/images/user.png' %}" alt="Profile">
+                                        </div>
+                                        <div class="profile-details">
+                                            <h4 class="text-white">Hello, Admin</h4>
+                                            <p>admin@example.com</p>
+                                        </div>
                                     </div>
-                                    <div class="profile-details">
-                                        <h4 class="text-white">Hello, Admin</h4>
-                                        <p>admin@example.com</p>
+                                    <ul class="menu-items">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-user"></i> My Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-box"></i> My Orders
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa-regular fa-star"></i> My Reviews
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href=" #">
+                                                <i class="fas fa-sign-out-alt"></i> Log out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="mode-toggle">
+                                        <h5>Mode</h5>
+                                        <button class="mode light">Light</button>
+                                        <button class="mode dark">Dark</button>
                                     </div>
                                 </div>
-                                <ul class="menu-items">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fas fa-user"></i> My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fas fa-box"></i> My Orders
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa-regular fa-star"></i> My Reviews
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href=" #">
-                                            <i class="fas fa-sign-out-alt"></i> Log out
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="mode-toggle">
-                                    <h5>Mode</h5>
-                                    <button class="mode light">Light</button>
-                                    <button class="mode dark">Dark</button>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- <li><a href="#" class="fw-bold my-color">Sign In</a></li> -->
-                        <!-- TODO: Add Authentication-->
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'register' %}" class="fw-bold my-color">Sign Up</a></li>
+                        {% endif %}
+
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

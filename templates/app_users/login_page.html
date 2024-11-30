@@ -97,20 +97,19 @@
     </div>
     <div class="card">
         <div class="card-body p-4 p-lg-5 text-white">
-            <form action="/login" method="post">
+            <form action="" method="post">
+                {% csrf_token %}
                 <h5 class="sign-in fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN IN TO YOUR ACCOUNT</h5>
                 <strong id="invalid-data-message" class="bg-blur rounded alert-danger" style="display: none;">
                     Wrong username or password.
                 </strong>
 
                 <div class="form-outline mb-4">
-                    <input type="email" required name="email" id="form2Example17"
-                           class="form-control form-control-lg" placeholder="Email address"/>
+                    {{form.username }}
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input required minlength="3" maxlength="20" type="password" name="password" id="form2Example27"
-                           class="form-control form-control-lg" placeholder="Password"/>
+                    {{ form.password }}
                 </div>
 
                 <div class="pt-1 mb-4">
@@ -118,7 +117,7 @@
                 </div>
 
                 <p class="mb-5 pb-lg-2" style="color: #d1d1d1;">Don't have an account? <a
-                        href="#">Register here</a></p>
+                        href="{% url 'register' %}">Register here</a></p>
             </form>
         </div>
     </div>

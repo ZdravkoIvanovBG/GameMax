@@ -3,12 +3,13 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-from GameMax.app_users.forms import AppUserCreationForm
+from GameMax.app_users.forms import AppUserCreationForm, AppUserLoginForm
 
 UserModel = get_user_model()
 
 
 class AppUserLoginView(LoginView):
+    authentication_form = AppUserLoginForm
     template_name = 'app_users/login_page.html'
 
 
@@ -24,4 +25,3 @@ class AppUserRegisterView(CreateView):
         login(self.request, user=self.object)
 
         return response
-    

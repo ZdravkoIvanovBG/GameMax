@@ -79,36 +79,25 @@
                         <div class="row g-0">
                             <div class="col-md-12 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black" style="padding-bottom: 0 !important;">
-                                    <form action="/register" method="POST">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
                                         <h5 class="create-an-account fw-normal mb-3 pb-3"
                                             style="letter-spacing: 1px;">CREATE AN
                                             ACCOUNT</h5>
 
                                         <div class="form-outline mb-4">
-                                            <input required minlength="3" maxlength="20"
-                                                   class="form-control form-control-lg" placeholder="Full Name"/>
+                                            {{ form.email }}
+                                            {{ form.email.errors }}
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="email" required id="email"
-                                                   class="form-control form-control-lg" placeholder="Your Email"/>
+                                            {{ form.password1 }}
+                                            {{ form.password1.errors }}
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input required type="number" class="form-control form-control-lg"
-                                                   placeholder="Age" min="15" max="110">
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input required minlength="3" maxlength="20" type="password"
-                                                   id="password" class="form-control form-control-lg"
-                                                   placeholder="Password"/>
-                                        </div>
-
-                                        <div class="form-outline mb-4">
-                                            <input required minlength="3" maxlength="20" id="password-repeat"
-                                                   type="password" class="form-control form-control-lg"
-                                                   placeholder="Repeat your password"/>
+                                            {{ form.password2 }}
+                                            {{ form.password2.errors }}
                                         </div>
 
                                         <div class="pt-1 mb-4">
@@ -118,7 +107,7 @@
                                         </div>
                                     </form>
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Have already an account? <a
-                                            href="#">Login here</a>
+                                            href="{% url 'login' %}">Login here</a>
                                 </div>
                             </div>
                         </div>
