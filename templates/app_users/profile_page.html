@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="profile">
+        <div class="profile-container anim-bottom">
+            <h2 class="text-white">Personal Information</h2>
+            <form>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" placeholder="Full Name"/>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Age</label>
+                    <input type="text" id="age" placeholder="Age"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Email Address"/>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" id="role" placeholder="Role" disabled/>
+                </div>
+                <div class="form-group">
+                    <label for="image-url">Image URL</label>
+                    <input type="url" id="image-url" placeholder="Image URL"/>
+                </div>
+                <div class="avatar">
+                    <img src="{% static 'assets/images/user.png' %}" alt="User Avatar"/> <!-- TODO: Put Image -->
+                </div>
+                <div class="file-upload">
+                    <label for="file-upload">Click to upload a new photo. (Up to 5mb)</label>
+                    <input type="file" id="file-upload"/>
+                </div>
+                <button type="submit" class="save-button">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

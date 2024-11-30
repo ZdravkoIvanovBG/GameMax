@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <title>GAMEMAX</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static 'assets/external-css/external.css' %}">
+    <!--
+
+  -->
+</head>
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="#" class="logo">
+                        <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: 200px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="#" class="active fw-bold">Home</a></li>
+                        <li><a href="#" class="fw-bold">Our Shop</a></li>
+                        <li><a href="#" class="fw-bold">About Us</a></li>
+                        <li><a href="#" class="fw-bold">Contact Us</a></li>
+                        <li class="profile-button-li">
+                            <button class="dropdown-toggle">
+                                <div class="user-icon"></div>
+                            </button>
+                            <div class="menu">
+                                <div class="profile-header">
+                                    <div class="profile-icon">
+                                        <img src="{% static 'assets/images/user.png' %}" alt="Profile">
+                                    </div>
+                                    <div class="profile-details">
+                                        <h4 class="text-white">Hello, Admin</h4>
+                                        <p>admin@example.com</p>
+                                    </div>
+                                </div>
+                                <ul class="menu-items">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-user"></i> My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-box"></i> My Orders
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-regular fa-star"></i> My Reviews
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href=" #">
+                                            <i class="fas fa-sign-out-alt"></i> Log out
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="mode-toggle">
+                                    <h5>Mode</h5>
+                                    <button class="mode light">Light</button>
+                                    <button class="mode dark">Dark</button>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li><a href="#" class="fw-bold my-color">Sign In</a></li> -->
+                        <!-- TODO: Add Authentication-->
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <div class="footer-top">
+        <div class="footer-logo">
+            <img src="{% static 'assets/images/logo.png' %}" alt="Footer Logo">
+        </div>
+        <nav class="footer-nav">
+            <a href="#">About us</a>
+            <a href="#">Shop</a>
+            <a href="#">Profile</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+        <span>© 2024 GAMEMAX™. All Rights Reserved.</span>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+<script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+<script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'assets/js/counter.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="page-heading header-text shop-heading">
+        <div class="overlay-shopping">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 featured-text" style="padding-top: 5em;">
+                        <h1 style="font-size: 50px">Our Featured <span>Shop</span></h1>
+                        <p style="font-size: 16px; color: #fff;">Explode our wide variety of games. There's a game of
+                            everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="food-item">
+            <button style="border: none; background-color: rgb(23, 23, 23); padding: 0; margin: 0;"><img
+                    src="{% static 'assets/images/latest.jpg' %}" alt="Far Cry" class="food-image"></button>
+        </div>
+
+        {#        <div class="food-item">#}
+        {#            <img src="assets/images/latest.jpg" alt="Burger" class="food-image">#}
+        {#        </div>#}
+        {##}
+        {#        <div class="food-item">#}
+        {#            <img src="latest.jpg" alt="Burger" class="food-image">#}
+        {#        </div>#}
+        {##}
+        {#        <div class="food-item">#}
+        {#            <img src="latest.jpg" alt="Burger" class="food-image">#}
+        {#        </div>#}
+        {##}
+        {#        <div class="food-item">#}
+        {#            <img src="latest.jpg" alt="Burger" class="food-image">#}
+        {#        </div>#}
+    </div>
+
+    <div class="section trending" style="margin: 5em;">
+        <div class="container game-section">
+            <div class="game-card">
+                <div class="hover-animation">
+                    <div class="card-image">
+                        <img src="{% static 'assets/images/background.jpg' %}" alt="AC Odyssey">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="game-title">Assassin's Creed Odyssey</h2>
+
+                        <div class="price-rating-section">
+                            <div class="price-section">
+                                <span class="new-price">$49.99</span>
+                            </div>
+                            <div class="rating-section">
+                                <img src="{% static 'assets/images/star-svgrepo-com.svg' %}" alt=""
+                                     style="height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;">
+                                <span class="rating-stars">4.1</span>
+                                <span class="reviews">• 0 reviews</span>
+                            </div>
+                        </div>
+                        <p class="game-card-description">
+                            Game with unique nature and philosophy characters
+                        </p>
+                        <a href="#" class="read-more">Game Details</a>
+                        <div class="card-buttons">
+                            <button class="add-to-cart">Add To Cart</button>
+                            <button class="submit-review">Submit A Review</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#            <div class="game-card">#}
+            {#                <div class="hover-animation">#}
+            {#                    <div class="card-image">#}
+            {#                        <img src="assets/images/background.jpg" alt="AC Odyssey">#}
+            {#                    </div>#}
+            {#                    <div class="card-content">#}
+            {#                        <h2 class="game-title">Assassin's Creed Odyssey</h2>#}
+            {##}
+            {#                        <div class="price-rating-section">#}
+            {#                            <div class="price-section">#}
+            {#                                <span class="new-price">$49.99</span>#}
+            {#                            </div>#}
+            {#                            <div class="rating-section">#}
+            {#                                <img src="star-svgrepo-com.svg" alt=""#}
+            {#                                     style="height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;">#}
+            {#                                <span class="rating-stars">4.1</span>#}
+            {#                                <span class="reviews">• 0 reviews</span>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <p class="game-card-description">#}
+            {#                            Game with unique nature and philosophy characters#}
+            {#                        </p>#}
+            {#                        <a href="#" class="read-more">Game Details</a>#}
+            {#                        <div class="card-buttons">#}
+            {#                            <button class="add-to-cart">Add To Cart</button>#}
+            {#                            <button class="submit-review">Submit A Review</button>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="game-card">#}
+            {#                <div class="hover-animation">#}
+            {#                    <div class="card-image">#}
+            {#                        <img src="assets/images/background.jpg" alt="AC Odyssey">#}
+            {#                    </div>#}
+            {#                    <div class="card-content">#}
+            {#                        <h2 class="game-title">Assassin's Creed Odyssey</h2>#}
+            {##}
+            {#                        <div class="price-rating-section">#}
+            {#                            <div class="price-section">#}
+            {#                                <span class="new-price">$49.99</span>#}
+            {#                            </div>#}
+            {#                            <div class="rating-section">#}
+            {#                                <img src="star-svgrepo-com.svg" alt=""#}
+            {#                                     style="height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;">#}
+            {#                                <span class="rating-stars">4.1</span>#}
+            {#                                <span class="reviews">• 0 reviews</span>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <p class="game-card-description">#}
+            {#                            Game with unique nature and philosophy characters#}
+            {#                        </p>#}
+            {#                        <a href="#" class="read-more">Game Details</a>#}
+            {#                        <div class="card-buttons">#}
+            {#                            <button class="add-to-cart">Add To Cart</button>#}
+            {#                            <button class="submit-review">Submit A Review</button>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="game-card">#}
+            {#                <div class="hover-animation">#}
+            {#                    <div class="card-image">#}
+            {#                        <img src="assets/images/background.jpg" alt="AC Odyssey">#}
+            {#                    </div>#}
+            {#                    <div class="card-content">#}
+            {#                        <h2 class="game-title">Assassin's Creed Odyssey</h2>#}
+            {##}
+            {#                        <div class="price-rating-section">#}
+            {#                            <div class="price-section">#}
+            {#                                <span class="new-price">$49.99</span>#}
+            {#                            </div>#}
+            {#                            <div class="rating-section">#}
+            {#                                <img src="star-svgrepo-com.svg" alt=""#}
+            {#                                     style="height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;">#}
+            {#                                <span class="rating-stars">4.1</span>#}
+            {#                                <span class="reviews">• 0 reviews</span>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <p class="game-card-description">#}
+            {#                            Game with unique nature and philosophy characters#}
+            {#                        </p>#}
+            {#                        <a href="#" class="read-more">Game Details</a>#}
+            {#                        <div class="card-buttons">#}
+            {#                            <button class="add-to-cart">Add To Cart</button>#}
+            {#                            <button class="submit-review">Submit A Review</button>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li><a href="#"> &lt; </a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a class="is_active" href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#"> &gt; </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
