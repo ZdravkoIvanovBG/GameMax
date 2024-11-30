@@ -93,19 +93,24 @@
 <body>
 <section class="vh-100">
     <div class="button">
-        <a class="btn btn-primary px-4" href="../home/home_page.html">Home</a>
+        <a class="btn btn-primary px-4" href="{% url 'home' %}">Home</a>
     </div>
     <div class="card">
         <div class="card-body p-4 p-lg-5 text-white">
             <form action="" method="post">
                 {% csrf_token %}
                 <h5 class="sign-in fw-normal mb-3 pb-3" style="letter-spacing: 1px;">SIGN IN TO YOUR ACCOUNT</h5>
-                <strong id="invalid-data-message" class="bg-blur rounded alert-danger" style="display: none;">
-                    Wrong username or password.
-                </strong>
+                {% if form.non_field_errors %}
+                    <strong>
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </strong>
+                {% endif %}
+
 
                 <div class="form-outline mb-4">
-                    {{form.username }}
+                    {{ form.username }}
                 </div>
 
                 <div class="form-outline mb-4">

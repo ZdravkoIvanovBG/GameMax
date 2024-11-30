@@ -48,7 +48,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="#" class="logo">
+                    <a href="{% url 'home' %}" class="logo">
                         <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: 200px;">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -75,7 +75,7 @@
                                     </div>
                                     <ul class="menu-items">
                                         <li>
-                                            <a href="#">
+                                            <a href="{% url 'profile-details' user.pk %}">
                                                 <i class="fas fa-user"></i> My Profile
                                             </a>
                                         </li>
@@ -90,9 +90,15 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href=" #">
-                                                <i class="fas fa-sign-out-alt"></i> Log out
-                                            </a>
+                                            <form method="POST" action="{% url 'logout' %}">
+                                                {% csrf_token %}
+                                                {#                                                <a href="{% url 'logout' %}">#}
+                                                {#                                                    <i class="fas fa-sign-out-alt"></i> Log out#}
+                                                {#                                                </a>#}
+                                                <button type="submit"><i
+                                                        class="fas fa-sign-out-alt"></i> Log Out
+                                                </button>
+                                            </form>
                                         </li>
                                     </ul>
                                     <div class="mode-toggle">
