@@ -14,7 +14,7 @@
 
         .card {
             background: linear-gradient(135deg, rgb(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-            backdrop-filter: blur(1.3px);
+            backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -29,6 +29,7 @@
 
         .form-control {
             background: linear-gradient(135deg, rgb(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            color: white;
         }
 
         input.form-control.form-control-lg::placeholder {
@@ -62,6 +63,15 @@
             transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-color: rgb(226, 72, 96);
+        }
+
+        .errorlist {
+            color: rgb(226, 27, 72);
+            padding-top: 1em;
+        }
+
+        .errorlist li {
+            color: white;
         }
     </style>
     <title>GameMax - Register Page</title>
