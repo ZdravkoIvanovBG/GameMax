@@ -782,9 +782,12 @@ footer {
 }
 
 .menu img {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   width: 36px;
   height: 36px;
-  margin-right: 1em;
+  border-radius: 50%;
 }
 
 /* Show Menu */
@@ -824,8 +827,13 @@ footer {
   padding: 0 10px !important;
 }
 
+.menu-items li button {
+  all: unset;
+}
+
 /* Scoped button and link styles for the profile dropdown */
-.profile-button-li .menu .menu-items li a {
+.profile-button-li .menu .menu-items li a,
+.profile-button-li .menu .menu-items li button {
   text-transform: none !important;
   font-weight: none !important;
   display: flex;
@@ -842,13 +850,21 @@ footer {
   text-decoration: none; /* Remove underline from links */
 }
 
+.profile-button-li .menu .menu-items li button {
+  padding: 0;
+  padding-left: 18px;
+  gap: 16px;
+}
+
 /* Button and link hover effect */
-.profile-button-li .menu .menu-items li a:hover {
+.profile-button-li .menu .menu-items li a:hover,
+.profile-button-li .menu .menu-items li button:hover {
   background-color: rgb(23, 23, 23) !important; /* Darker background on hover */
 }
 
 /* Ensure the profile icon inside buttons is aligned properly */
-.profile-button-li .menu .menu-items li a i {
+.profile-button-li .menu .menu-items li a i,
+.profile-button-li .menu .menu-items li button i {
   font-size: 16px; /* Icon size */
 }
 
@@ -976,4 +992,8 @@ h2 {
 
 .save-button:hover {
   background: #ff7979;
+}
+
+.dropdown-toggle::after {
+  content: none;
 }

@@ -74,3 +74,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.full_name or 'Anonymous'
+
+    def get_name(self):
+        return self.full_name.split()[0] or 'Anonymous'

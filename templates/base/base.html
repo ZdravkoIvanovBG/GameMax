@@ -61,16 +61,19 @@
                         {% if request.user.is_authenticated %}
                             <li class="profile-button-li">
                                 <button class="dropdown-toggle">
-                                    <div class="user-icon"></div>
+                                    {% if request.user.profile.profile_picture %}
+                                        <div class="user-icon"
+                                             style="background-image: url({{ request.user.profile.profile_picture.url }})">
+                                        </div>
+                                    {% else %}
+                                        <div class="user-icon"></div>
+                                    {% endif %}
                                 </button>
                                 <div class="menu">
                                     <div class="profile-header">
-                                        <div class="profile-icon">
-                                            <img src="{% static 'assets/images/user.png' %}" alt="Profile">
-                                        </div>
                                         <div class="profile-details">
-                                            <h4 class="text-white">Hello, Admin</h4>
-                                            <p>admin@example.com</p>
+                                            <h4 class="text-white" style="font-size:22px;">Hello, {{ request.user.profile.full_name }}!</h4>
+                                            <p>{{ request.user.email }}</p>
                                         </div>
                                     </div>
                                     <ul class="menu-items">
@@ -85,7 +88,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="#" style="gap: 7px !important; padding-left: 14px;">
                                                 <i class="fa-regular fa-star"></i> My Reviews
                                             </a>
                                         </li>
