@@ -1,6 +1,6 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-from django.core.validators import MinValueValidator, MinLengthValidator
+from django.core.validators import MinValueValidator, MinLengthValidator, MaxValueValidator
 from django.db import models
 
 from GameMax.app_users.managers import AppUserManager
@@ -43,6 +43,7 @@ class Profile(models.Model):
     age = models.PositiveIntegerField(
         validators=[
             MinValueValidator(15),
+            MaxValueValidator(99)
         ]
     )
 
@@ -56,7 +57,7 @@ class Profile(models.Model):
     )
 
     profile_picture = models.ImageField(
-        upload_to='media/profile_pictures',
+        upload_to='profile_pictures',
         null=True,
         blank=True
     )
@@ -66,3 +67,6 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True
     )
+
+    def __str__(self):
+        return self.full_name or 'Anonymous'

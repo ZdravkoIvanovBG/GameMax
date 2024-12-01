@@ -1,21 +1,51 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
+
+
 {% block content %}
+    {% block extra_styles %}
+        <style>
+            .form-group .errorlist li {
+                padding-top: 0.3em;
+                padding-bottom: 1em;
+                color: rgb(226, 29, 72);
+                font-weight: 600;
+            }
+
+            #id_profile_picture {
+                padding: 1rem;
+            }
+        </style>
+    {% endblock %}
+
     <div class="profile">
-        <div class="profile-container anim-bottom">
+        <div class="profile-container">
             <h2 class="text-white">Personal Information</h2>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="{{ request.user.email }}" disabled/>
+                </div>
+
                 {% for field in form %}
-
-                    <div class="form-group">
-                        <label>{{ field.label }}</label>
-                        {{ field }}
-                    </div>
-
+                    {% if not field.name == 'profile_picture' %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    {% else %}
+                        <div class="file-upload" onclick="triggerFileUpload('profile-picture-upload')">
+                            <label>{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
+
+
 
                 {% if not request.user.profile.profile_picture %}
                     <div class="avatar">
@@ -23,13 +53,25 @@
                     </div>
                 {% else %}
                     <div class="avatar">
-                        <img src="{{ request.user.profile.profile_picture }}" alt="User Avatar"/>
+                        <img src="{{ request.user.profile.profile_picture.url }}" alt="User Avatar"/>
                     </div>
 
                 {% endif %}
 
-                <button type="submit" class="save-button">Save</button>
+                <button type="submit" class="save-button my-color">Save</button>
             </form>
         </div>
     </div>
+
+    {% block extra_script %}
+        <script>
+            function triggerFileUpload(inputId) {
+                const fileInput = document.getElementById(inputId)
+
+                if (fileInput) {
+                    fileInput.click();
+                }
+            }
+        </script>
+    {% endblock %}
 {% endblock %}

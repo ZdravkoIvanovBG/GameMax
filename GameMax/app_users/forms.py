@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
+from django.core.exceptions import ValidationError
 
 from GameMax.app_users.models import Profile
 
@@ -48,9 +49,14 @@ class AppUserCreationForm(UserCreationForm):
 
 
 class ProfileEditForm(forms.ModelForm):
+    profile_picture = forms.ImageField(
+        widget=forms.FileInput(attrs={'id': 'profile-picture-upload'}),
+        label='Click to upload a new photo. (Up to 5mb)'
+    )
+
     class Meta:
         model = Profile
-        exclude = ('user',)
+        fields = ('full_name', 'age', 'phone_number', 'profile_picture')
 
         widgets = {
             'full_name': forms.TextInput(
@@ -67,5 +73,13 @@ class ProfileEditForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'Phone Number',
                 }
-            )
+            ),
         }
+
+    def clean_phone_number(self, *args ,**kwargs):
+        phone_number = self.cleaned_data.get('phone_number')
+
+        if len(phone_number) != 10:
+            raise ValidationError('Phone Number needs to be exactly 10 characters!')
+
+        return phone_number
