@@ -51,7 +51,7 @@ class AppUserCreationForm(UserCreationForm):
 class ProfileEditForm(forms.ModelForm):
     profile_picture = forms.ImageField(
         widget=forms.FileInput(attrs={'id': 'profile-picture-upload'}),
-        label='Click to upload a new photo. (Up to 5mb)'
+        label='Click to upload a new photo. (Up to 5MB)'
     )
 
     class Meta:

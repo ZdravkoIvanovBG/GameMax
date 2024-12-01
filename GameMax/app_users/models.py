@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MinLengthValidator, MaxVal
 from django.db import models
 
 from GameMax.app_users.managers import AppUserManager
+from GameMax.app_users.validators import MaxFileSizeValidator
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
@@ -59,7 +60,10 @@ class Profile(models.Model):
     profile_picture = models.ImageField(
         upload_to='profile_pictures',
         null=True,
-        blank=True
+        blank=True,
+        validators=[
+            MaxFileSizeValidator()
+        ]
     )
 
     user = models.OneToOneField(

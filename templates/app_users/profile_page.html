@@ -41,6 +41,7 @@
                         <div class="file-upload" onclick="triggerFileUpload('profile-picture-upload')">
                             <label>{{ field.label }}</label>
                             {{ field }}
+                            {{ field.errors }}
                         </div>
                     {% endif %}
                 {% endfor %}
