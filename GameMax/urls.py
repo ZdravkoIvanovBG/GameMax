@@ -6,7 +6,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('GameMax.home.urls')),
-    path('accounts/', include('GameMax.app_users.urls'))
+    path('accounts/', include('GameMax.app_users.urls')),
+    path('shop/', include('GameMax.shop.urls'))
 ]
 
 if settings.DEBUG:

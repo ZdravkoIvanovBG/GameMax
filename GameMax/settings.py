@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'GameMax.app_users',
-    'GameMax.home'
+    'GameMax.home',
+    'GameMax.shop'
 ]
 
 MIDDLEWARE = [
