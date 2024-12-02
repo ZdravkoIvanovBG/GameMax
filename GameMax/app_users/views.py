@@ -38,7 +38,7 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.pk != kwargs['pk']:
-            return HttpResponseForbidden
+            return HttpResponseForbidden  # TODO: Make 403.html page
 
         return super().dispatch(request, *args, **kwargs)
 

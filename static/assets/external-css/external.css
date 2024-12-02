@@ -530,8 +530,7 @@ footer {
   display: flex;
   align-items: center;
 }
-
-.food-item {
+.game-item {
   width: 130px;
   background-color: rgb(23, 23, 23);
   border: 2px solid rgb(226, 29, 72);
@@ -542,12 +541,12 @@ footer {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.food-item:hover {
+.game-item:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgb(226, 29, 72), 0 0 20px rgb(226, 29, 72);
 }
 
-.food-image {
+.game-image {
   width: 100%;
   height: auto;
   border-radius: 10px;

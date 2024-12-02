@@ -76,10 +76,10 @@ class ProfileEditForm(forms.ModelForm):
             ),
         }
 
-    def clean_phone_number(self, *args ,**kwargs):
+    def clean_phone_number(self, *args, **kwargs):
         phone_number = self.cleaned_data.get('phone_number')
 
-        if len(phone_number) != 10:
-            raise ValidationError('Phone Number needs to be exactly 10 characters!')
+        if not phone_number or len(phone_number) != 10 or not phone_number.isdigit():
+            raise ValidationError('Phone Number needs to be exactly 10 digits!')
 
         return phone_number

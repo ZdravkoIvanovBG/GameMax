@@ -38,6 +38,7 @@ class Profile(models.Model):
         blank=False,
         validators=[
             MinLengthValidator(2, message='Your Name Must Be At Least 2 Characters Long.')
+            # TODO: Make Validator for only letters
         ]
     )
 

@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,12 +42,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+    'drf_spectacular',
+    'corsheaders',
+
     'GameMax.app_users',
     'GameMax.home',
-    'GameMax.shop'
+    'GameMax.shop',
+
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'GAMEMAX',
+    'DESCRIPTION': 'The Best Shop Ever Created',
+    'VERSION': '1.0.0',
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
