@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator, MinLengthValidator, MaxVal
 from django.db import models
 
 from GameMax.app_users.managers import AppUserManager
-from GameMax.app_users.validators import MaxFileSizeValidator
+from GameMax.app_users.validators import MaxFileSizeValidator, OnlyLettersDigitsUnderscoresValidator
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
@@ -37,8 +37,8 @@ class Profile(models.Model):
         null=True,
         blank=False,
         validators=[
-            MinLengthValidator(2, message='Your Name Must Be At Least 2 Characters Long.')
-            # TODO: Make Validator for only letters
+            MinLengthValidator(2, message='Your Name Must Be At Least 2 Characters Long.'),
+            OnlyLettersDigitsUnderscoresValidator()
         ]
     )
 
