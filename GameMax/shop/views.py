@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 
-from GameMax.shop.models import Game
+from GameMax.shop.models import Game, Franchise
 from GameMax.shop.serializers import GameSerializer
 
 
-class ShopPageView(TemplateView):
+class ShopPageView(ListView):
+    model = Franchise
     template_name = 'shop/shop.html'
 
 

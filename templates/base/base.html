@@ -138,8 +138,8 @@
         </div>
         <nav class="footer-nav">
             <a href="#">About us</a>
-            <a href="#">Shop</a>
-            <a href="#">Profile</a>
+            <a href="{% url 'shop' %}">Shop</a>
+            <a href="{% url 'profile-details' user.pk %}">Profile</a>
             <a href="#">Contact</a>
         </nav>
     </div>
