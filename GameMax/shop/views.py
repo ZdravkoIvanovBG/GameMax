@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 
 from GameMax.shop.models import Game, Franchise
@@ -23,3 +23,10 @@ class GameListView(ListAPIView):
             queryset = queryset.filter(franchise__name=franchise)
 
         return queryset
+
+
+class GameDetailView(DetailView):
+    model = Game
+    template_name = 'products/product-details.html'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'

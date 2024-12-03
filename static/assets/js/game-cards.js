@@ -49,6 +49,10 @@ function renderGameCard(game) {
     title.classList.add('game-title');
     title.textContent = game.title;
 
+    if(game.title.length > 31) {
+        title.classList.add('long-title');
+    }
+
     // Add the price and rating section
     const priceRatingSection = document.createElement('div');
     priceRatingSection.classList.add('price-rating-section');
@@ -87,7 +91,7 @@ function renderGameCard(game) {
 
     // Add "Read More" link
     const readMore = document.createElement('a');
-    readMore.href = game.details_url;
+    readMore.href = `game/${game.slug}/`;
     readMore.classList.add('read-more');
     readMore.textContent = 'Game Details';
 
