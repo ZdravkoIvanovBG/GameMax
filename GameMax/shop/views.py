@@ -1,8 +1,9 @@
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from drf_spectacular.utils import extend_schema
 from rest_framework import status
-from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -80,3 +81,21 @@ class AddToCartView(APIView):
             'message': 'Game added to the cart.',
             'cart_item': cart_item_serializer.data
         }, status=status.HTTP_201_CREATED)
+
+
+class RemoveFromCart(DestroyAPIView):
+    queryset = CartItem.objects.all()
+    serializer_class = CartItemSerializer
+
+    def get_object(self):
+        cart_item_id = self.kwargs['pk']
+
+        try:
+            cart_item = CartItem.objects.get(id=cart_item_id)
+
+            return cart_item
+        except CartItem.DoesNotExist:
+            return Http404
+
+    def perform_destroy(self, instance):
+        instance.delete()

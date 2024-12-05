@@ -11,6 +11,7 @@ async function fetchCartData() {
         const cartData = await response.json();
 
         await renderCart(cartData.items);
+        updateCartCount(cartData.items);
         updateTotalPrice(cartData.total_price);
     } catch (error) {
         console.error('Error fetching cart data:', error);
@@ -89,8 +90,7 @@ async function renderCart(cartItems) {
         removeLink.href = "#";
         removeLink.classList.add("cart-item-remove");
         removeLink.textContent = "Remove";
-        // Add event listener for removing items (not implemented yet)
-        // removeLink.addEventListener("click", () => removeItemFromCart(item.id));
+        removeLink.addEventListener("click", () => removeFromCart(item.id));
 
         itemDetails.appendChild(itemTitle);
         itemDetails.appendChild(removeLink);
@@ -160,4 +160,32 @@ async function addToCart(gameId) {
     } catch (error) {
         console.error('Error adding to cart: ', error);
     }
+}
+
+async function removeFromCart(cartItemId) {
+    const csrfToken = getCSRFToken();
+
+    if (!csrfToken) {
+        console.error('CSRF token not found');
+        return;
+    }
+
+    try {
+        const response = await fetch(`api/cart/remove/${cartItemId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to remove item from cart');
+        }
+
+        fetchCartData();
+    } catch (error) {
+        console.error('Error removing item from cart: ', error);
+    }
+
 }
