@@ -49,7 +49,7 @@ function renderGameCard(game) {
     title.classList.add('game-title');
     title.textContent = game.title;
 
-    if(game.title.length > 31) {
+    if (game.title.length > 31) {
         title.classList.add('long-title');
     }
 
@@ -101,6 +101,10 @@ function renderGameCard(game) {
     const addToCartButton = document.createElement('button');
     addToCartButton.classList.add('add-to-cart');
     addToCartButton.textContent = 'Add To Cart';
+    // addToCartButton.setAttribute('data-game-id', game.id);
+    addToCartButton.addEventListener('click', () => {
+        addToCart(game.id);
+    });
 
     const submitReviewButton = document.createElement('button');
     submitReviewButton.classList.add('submit-review');

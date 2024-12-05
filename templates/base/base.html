@@ -59,6 +59,13 @@
                         <li><a href="#" class="fw-bold">About Us</a></li>
                         <li><a href="#" class="fw-bold">Contact Us</a></li>
                         {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <button id="shopping-cart-btn" class="cart-button">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span id="cart-count" class="cart-badge">0</span>
+                                </button>
+                            </li>
+
                             <li class="profile-button-li">
                                 <button class="dropdown-toggle">
                                     {% if request.user.profile.profile_picture %}
@@ -128,6 +135,26 @@
 </header>
 <!-- ***** Header Area End ***** -->
 
+<div id="shopping-cart-menu" class="cart-menu hidden">
+    <div class="cart-menu-header">
+        <h3 class="text-white">Game Cart</h3>
+        <button id="close-cart-menu" class="close-cart-btn">&times;</button>
+    </div>
+
+    <!-- Container for dynamically rendered cart items -->
+    <div class="cart-items">
+        <!-- The items will be dynamically added here by JavaScript -->
+        <p class="empty-cart-message">Your cart is empty.</p>
+    </div>
+
+    <div class="cart-menu-footer">
+        <p class="total">
+            Total: <span id="cart-total">$0.00</span>
+        </p>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+</div>
+
 {% block content %}
 {% endblock %}
 
@@ -139,7 +166,7 @@
         <nav class="footer-nav">
             <a href="#">About us</a>
             <a href="{% url 'shop' %}">Shop</a>
-            <a href="{% url 'profile-details' user.pk %}">Profile</a>
+            <a href="#">Profile</a>
             <a href="#">Contact</a>
         </nav>
     </div>
@@ -157,6 +184,7 @@
 <script src="{% static 'assets/js/counter.js' %}"></script>
 <script src="{% static 'assets/js/custom.js' %}"></script>
 <script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/shop-cart.js' %}"></script>
 
 </body>
 </html>

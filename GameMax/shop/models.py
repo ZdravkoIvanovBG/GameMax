@@ -1,9 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.text import slugify
 
 from GameMax.app_users.validators import MaxFileSizeValidator
 from GameMax.home.choices import GenreChoices
+
+UserModel = get_user_model()
 
 
 class Franchise(models.Model):
@@ -80,3 +83,36 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def total_price(self):
+        return sum(item.total_price() for item in self.items.all())
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(
+        Cart,
+        related_name='items',
+        on_delete=models.CASCADE
+    )
+
+    game = models.ForeignKey(
+        Game,
+        on_delete=models.CASCADE
+    )
+
+    def total_price(self):
+        return self.game.price
+
+    def __str__(self):
+        return f'{self.game.title}'
