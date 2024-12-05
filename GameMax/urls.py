@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('GameMax.home.urls')),
     path('accounts/', include('GameMax.app_users.urls')),
     path('shop/', include('GameMax.shop.urls')),
+    path('interactions/', include('GameMax.interactions.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
