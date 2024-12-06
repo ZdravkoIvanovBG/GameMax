@@ -109,9 +109,6 @@ function renderGameCard(game) {
     const submitReviewButton = document.createElement('button');
     submitReviewButton.classList.add('submit-review');
     submitReviewButton.textContent = 'Submit A Review';
-    // submitReviewButton.setAttribute('data-game-id', game.id);
-    const submitReviewSubmissionButton = document.getElementById('submit-btn');
-    submitReviewSubmissionButton.setAttribute('data-game-id', game.id);
 
     const reviewPopup = document.getElementById("review-popup");
     const overlay = document.getElementById("overlay");
@@ -120,6 +117,9 @@ function renderGameCard(game) {
         reviewPopup.style.display = "block";
         overlay.style.display = "block";
         document.body.style.overflow = "hidden";
+
+        const reviewForm = document.getElementById('review-form');
+        reviewForm.setAttribute('data-game-id', game.id);
     });
 
     cardButtons.appendChild(addToCartButton);

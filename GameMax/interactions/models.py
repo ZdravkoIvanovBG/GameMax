@@ -45,7 +45,6 @@ class Review(models.Model):
     game = models.ForeignKey(
         Game,
         on_delete=models.CASCADE,
-        related_name='reviews'
     )
 
     user = models.ForeignKey(

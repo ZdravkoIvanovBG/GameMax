@@ -39,9 +39,10 @@ function closePopup() {
 const reviewForm = document.getElementById('review-form');
 const reviewInput = reviewForm.querySelector('textarea[name="opinion"]');
 
-async function ReviewSubmission(gameId) {
+async function ReviewSubmission() {
     const rating = ratingInput.value;
     const review_text = reviewInput.value;
+    const gameId = reviewForm.getAttribute('data-game-id');
 
     if (!rating) {
         alert("Please provide a rating");
@@ -71,10 +72,8 @@ async function ReviewSubmission(gameId) {
     }
 }
 
-document.querySelectorAll('.submit').forEach((button) => {
-    button.addEventListener('click', () => {
-        const gameId = button.getAttribute('data-game-id');
+const submitReviewSubmissionButton = document.getElementById('submit-btn');
 
-        ReviewSubmission(gameId);
-    });
-});
+submitReviewSubmissionButton.addEventListener('click', () => {
+    ReviewSubmission();
+})
