@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="orders-body">
+        <div class="orders-overlay">
+            <div class="container order-container my-5">
+                <h1 class="mb-4 text-white" style="text-align: center; margin-bottom: 2rem !important;">Your Orders</h1>
+
+                {% if order_list %}
+                    <div class="row">
+                        {% for order in order_list %}
+                            <div class="col-md-6">
+                                <div class="order-card">
+                                    <h5>Order #{{ order.id }}</h5>
+                                    <p><strong>Status: </strong><span class="status-badge"
+                                                                      data-status="{{ order.status|lower }}">{{ order.status }}</span>
+                                    </p>
+                                    <p><i class="fas fa-calendar-alt"></i> <strong>Order
+                                        Date:</strong> {{ order.order_date }}
+                                    </p>
+                                    <p><i class="fas fa-dollar-sign"></i> <strong>Total
+                                        Price:</strong> ${{ order.total_price }}</p>
+                                    <p><i class="fas fa-credit-card"></i> <strong>Paid:</strong> {{ order.paid }}</p>
+
+                                    <h6><i class="fas fa-gamepad"></i> Games in Order:</h6>
+                                    <ul>
+                                        {% for game in order.games.all %}
+                                            <li><strong>{{ game.title }}</strong> - ${{ game.price }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="text-align: center; font-size: 40px; padding-top: 3em; color: white; font-weight: bold;">You have no orders.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

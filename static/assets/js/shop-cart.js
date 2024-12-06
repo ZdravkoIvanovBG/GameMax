@@ -1,6 +1,6 @@
 async function fetchCartData() {
     try {
-        let apiURL = 'api/cart/';
+        let apiURL = '/api/cart/';
 
         const response = await fetch(apiURL);
 
@@ -20,7 +20,7 @@ async function fetchCartData() {
 
 async function fetchGameDetails(gameId) {
     try {
-        const response = await fetch(`api/games/${gameId}`);
+        const response = await fetch(`/shop/api/games/${gameId}`);
 
         if (!response.ok) {
             throw new Error('Failed to fetch game details.')
@@ -35,7 +35,7 @@ async function fetchGameDetails(gameId) {
 }
 
 async function getCartId() {
-    const response = await fetch('api/cart/');
+    const response = await fetch('/api/cart/');
     const cartData = await response.json();
 
     // console.log(cartData.id);
@@ -206,7 +206,7 @@ async function checkout() {
 
         // const orderData = await response.json();
 
-        window.location.href = '';
+        window.location.href = '/interactions/orders/';
     } catch (error) {
         console.error('Error during checkout: ', error);
     }

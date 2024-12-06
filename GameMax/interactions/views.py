@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView, ListView
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
@@ -6,6 +7,11 @@ from rest_framework.response import Response
 from GameMax.interactions.models import Order
 from GameMax.interactions.serializers import OrderSerializer
 from GameMax.shop.models import CartItem
+
+
+class OrderPageView(ListView):
+    model = Order
+    template_name = 'shop/orders.html'
 
 
 class OrderCreateView(CreateAPIView):
