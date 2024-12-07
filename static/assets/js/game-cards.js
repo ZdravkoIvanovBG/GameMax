@@ -72,10 +72,21 @@ function renderGameCard(game) {
     ratingImg.style.cssText = "height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;";
     const ratingStars = document.createElement('span');
     ratingStars.classList.add('rating-stars');
-    ratingStars.textContent = game.rating;
+
+    let rating = 0;
+
+    if (game.reviews.length > 0) {
+        for (let i = 0; i < game.reviews.length; i++) {
+            rating += game.reviews[i].rating;
+        }
+
+        rating = (rating / game.reviews.length).toFixed(2);
+    }
+
+    ratingStars.textContent = rating;
     const reviews = document.createElement('span');
     reviews.classList.add('reviews');
-    reviews.textContent = `• ${game.reviews} reviews`;
+    reviews.textContent = `• ${game.reviews.length} reviews`;
 
     ratingSection.appendChild(ratingImg);
     ratingSection.appendChild(ratingStars);
