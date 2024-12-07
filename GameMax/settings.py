@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'GameMax.app_users',
     'GameMax.home',
     'GameMax.shop',
-    'GameMax.interactions'
+    'GameMax.orders',
+    'GameMax.reviews'
 ]
 
 REST_FRAMEWORK = {

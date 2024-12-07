@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from GameMax.interactions.models import Review
-from GameMax.interactions.serializers import ReviewSerializer
+# from GameMax.interactions.models import Review
+# from GameMax.interactions.serializers import ReviewSerializer
 from GameMax.shop.models import Franchise, Game, Cart, CartItem
 
 

@@ -61,7 +61,7 @@ async function ReviewSubmission() {
     console.log(gameId);
 
     try {
-        const response = await fetch('/interactions/api/reviews/create/', {
+        const response = await fetch('/reviews/api/reviews/create/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ async function ReviewSubmission() {
             throw new Error('Failed to submit review.');
         }
 
-        window.location.href = '/interactions/reviews/';
+        window.location.href = '../../../GameMax/reviews/';
 
     } catch (error) {
         console.error('Error submitting review: ', error);

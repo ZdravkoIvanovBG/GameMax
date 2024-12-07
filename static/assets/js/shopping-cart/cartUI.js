@@ -106,116 +106,6 @@ async function renderCart(cartItems) {
     updateCartCount(cartItems);
 }
 
-// async function renderCart(cartItems) {
-//     const cartItemsContainer = document.querySelector('.cart-items');
-//
-//     if (cartItemsContainer.length === 0) {
-//         const emptyMessage = document.createElement('p');
-//         emptyMessage.classList.add("empty-cart-message");
-//         emptyMessage.textContent = "Your cart is empty.";
-//         cartItemsContainer.appendChild(emptyMessage);
-//         return;
-//     }
-//
-//     for (const item of cartItems) {
-//         const existingCartItem = cartItemsContainer.querySelector(`.cart-item[data-id="${item['game'.id]}"]`);
-//
-//         if (!existingCartItem) {
-//             const game = await fetchGameDetails(item['game'].slug);
-//
-//             const cartItem = document.createElement("div");
-//             cartItem.classList.add("cart-item");
-//             cartItem.setAttribute("data-id", item['game'].id);
-//
-//             const itemImage = document.createElement("img");
-//             itemImage.src = game.game_image;
-//             itemImage.alt = `${game.title} Thumbnail`;
-//             itemImage.classList.add("cart-item-image");
-//
-//             const itemDetails = document.createElement("div");
-//             itemDetails.classList.add("cart-item-details");
-//
-//             const itemTitle = document.createElement("h4");
-//             itemTitle.classList.add("cart-item-title");
-//             itemTitle.textContent = game.title;
-//
-//             const removeLink = document.createElement("a");
-//             removeLink.href = "#";
-//             removeLink.classList.add("cart-item-remove");
-//             removeLink.textContent = "Remove";
-//             removeLink.addEventListener("click", () => removeFromCart(item.id));
-//
-//             itemDetails.appendChild(itemTitle);
-//             itemDetails.appendChild(removeLink);
-//
-//             const itemGenre = document.createElement("div");
-//             itemGenre.classList.add("cart-item-genre");
-//             itemGenre.textContent = game.genre;
-//
-//             const itemPrice = document.createElement("div");
-//             itemPrice.classList.add("cart-item-price");
-//             itemPrice.textContent = `$${game.price}`
-//
-//             cartItem.appendChild(itemImage);
-//             cartItem.appendChild(itemDetails);
-//             cartItem.appendChild(itemGenre);
-//             cartItem.appendChild(itemPrice);
-//
-//             cartItemsContainer.appendChild(cartItem);
-//         }
-//     }
-//
-//     updateCartCount(cartItems);
-// }
-
-// function addNewCartItem(newItem) {
-//     const cartItemsContainer = document.querySelector('.cart-items');
-//
-//     fetchGameDetails(newItem.cart_item['game'].slug).then(game => {
-//         const cartItem = document.createElement('div');
-//         cartItem.classList.add("cart-item");
-//         cartItem.setAttribute("data-id", newItem.id);
-//
-//         const itemImage = document.createElement("img");
-//         itemImage.src = game.game_image;
-//         itemImage.alt = `${game.title} Thumbnail`;
-//         itemImage.classList.add("cart-item-image");
-//
-//         const itemDetails = document.createElement("div");
-//         itemDetails.classList.add("cart-item-details");
-//
-//         const itemTitle = document.createElement("h4");
-//         itemTitle.classList.add("cart-item-title");
-//         itemTitle.textContent = game.title;
-//
-//         const removeLink = document.createElement("a");
-//         removeLink.href = "#";
-//         removeLink.classList.add("cart-item-remove");
-//         removeLink.textContent = "Remove";
-//         removeLink.addEventListener("click", () => removeFromCart(newItem.id));
-//
-//         itemDetails.appendChild(itemTitle);
-//         itemDetails.appendChild(removeLink);
-//
-//         const itemGenre = document.createElement("div");
-//         itemGenre.classList.add("cart-item-genre");
-//         itemGenre.textContent = game.genre;
-//
-//         const itemPrice = document.createElement("div");
-//         itemPrice.classList.add("cart-item-price");
-//         itemPrice.textContent = `$${game.price}`;
-//
-//         cartItem.appendChild(itemImage);
-//         cartItem.appendChild(itemDetails);
-//         cartItem.appendChild(itemGenre);
-//         cartItem.appendChild(itemPrice);
-//
-//         cartItemsContainer.appendChild(cartItem);
-//
-//         updateCartCount(cartItemsContainer.children);
-//     });
-// }
-
 async function addToCart(gameId) {
     const cartId = await getCartId();
 
@@ -276,7 +166,7 @@ async function removeFromCart(cartItemId) {
             throw new Error('Failed to remove item from cart');
         }
 
-        fetchCartData();
+        await fetchCartData();
     } catch (error) {
         console.error('Error removing item from cart: ', error);
     }
