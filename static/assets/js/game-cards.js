@@ -20,8 +20,6 @@ async function fetchGameData(franchise = null) {
 }
 
 function renderGameCard(game) {
-    const gameContainer = document.querySelector(".game-section");
-
     const card = document.createElement("div");
     card.classList.add("game-card");
     card.onclick = () => {

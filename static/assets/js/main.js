@@ -13,12 +13,10 @@ cartButton.addEventListener("click", () => {
     cartMenu.classList.toggle("hidden"); // Show or hide the cart menu
 });
 
-// Function to close the cart menu
 closeCartButton.addEventListener("click", () => {
     cartMenu.classList.add("hidden"); // Hide the cart menu
 });
 
-// Close cart menu if the user clicks outside it
 window.addEventListener("click", (e) => {
     if (!cartMenu.contains(e.target) && e.target !== cartButton) {
         cartMenu.classList.add("hidden");

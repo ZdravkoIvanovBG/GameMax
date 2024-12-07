@@ -36,9 +36,12 @@ class GameFranchiseSerializer(serializers.ModelSerializer):
 
 
 class CartItemSerializer(serializers.ModelSerializer):
+    game = GameSerializer(read_only=True)
+
     class Meta:
         model = CartItem
-        fields = '__all__'
+        fields = ['id', 'cart', 'game']
+        read_only_fields = ['id']
 
 
 class CartSerializer(serializers.ModelSerializer):

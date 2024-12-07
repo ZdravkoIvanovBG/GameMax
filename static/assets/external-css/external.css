@@ -130,6 +130,10 @@ body {
     }
 }
 
+.single-product span.price {
+    color: #4caf50 !important;
+}
+
 section.pricing {
     background: rgb(23, 23, 23);
     height: 65vh;
@@ -563,9 +567,21 @@ footer {
     box-shadow: 0 0 15px rgb(255, 204, 0), 0 0 20px rgb(255, 204, 0);
 }
 
+@media (max-width: 1479px) {
+    .game-card {
+        width: 379px !important;
+    }
+}
+
+@media (max-width: 1917px) {
+    .game-card-image img {
+        height: 13vh !important;
+    }
+}
+
 @media (max-width: 1200px) {
     .game-item {
-        width: 200px;
+        width: 70px;
     }
 }
 
@@ -689,7 +705,8 @@ footer {
 
 @media (max-width: 1439px) {
     .game-card {
-        height: 60vh;
+        height: 20vh;
+        width: 365px;
     }
 }
 
@@ -956,6 +973,17 @@ h2 {
     content: none;
 }
 
+.nav .nav-item {
+    position: relative;
+    padding-top: 7px;
+    padding-right: 15px !important;
+    transition: all 0.3s ease;
+}
+
+.nav .nav-item:hover {
+    transform: scale(1.1);
+}
+
 .cart-button {
     position: relative;
     background: none;
@@ -963,6 +991,9 @@ h2 {
     cursor: pointer;
     font-size: 20px;
     color: white;
+    display: flex;
+    justify-content: center;
+    width: 30px;
 }
 
 .cart-button:focus {
@@ -972,6 +1003,7 @@ h2 {
 /* Shopping cart icon */
 .cart-button .fa-shopping-cart {
     font-size: 24px;
+    pointer-events: none !important;
 }
 
 /* Badge for item count */

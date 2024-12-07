@@ -55,7 +55,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{% url 'home' %}" class="active fw-bold">Home</a></li>
+                        <li><a href="{% url 'home' %}" class="fw-bold">Home</a></li>
                         <li><a href="{% url 'shop' %}" class="fw-bold">Our Shop</a></li>
                         <li><a href="#" class="fw-bold">About Us</a></li>
                         <li><a href="#" class="fw-bold">Contact Us</a></li>
@@ -81,7 +81,11 @@
                                     <div class="profile-header">
                                         <div class="profile-details">
                                             <h4 class="text-white" style="font-size:22px;">
-                                                Hello, {{ request.user.profile.full_name }}!</h4>
+                                                {% if request.user.profile.full_name %}
+                                                    Hello, {{ request.user.profile.full_name }}!</h4>
+                                                {% else %}
+                                                    Hello!
+                                                {% endif %}
                                             <p>{{ request.user.email }}</p>
                                         </div>
                                     </div>
@@ -122,7 +126,8 @@
                                 </div>
                             </li>
                         {% else %}
-                            <li><a href="{% url 'register' %}" class="fw-bold my-color">Sign Up</a></li>
+                            <li><a href="{% url 'register' %}" class="fw-bold my-color">Sign Up</a>
+                            </li>
                         {% endif %}
 
                     </ul>
@@ -144,7 +149,6 @@
     </div>
 
     <div class="cart-items">
-        <p class="empty-cart-message">Your cart is empty.</p>
     </div>
 
     <div class="cart-menu-footer">
@@ -184,8 +188,7 @@
 <script src="{% static 'assets/js/counter.js' %}"></script>
 <script src="{% static 'assets/js/custom.js' %}"></script>
 <script src="{% static 'assets/js/main.js' %}"></script>
-<script src="{% static 'assets/js/shop-cart.js' %}"></script>
-
+<script type="module" src="{% static 'assets/js/shopping-cart/cartUI.js' %}"></script>
 
 </body>
 </html>

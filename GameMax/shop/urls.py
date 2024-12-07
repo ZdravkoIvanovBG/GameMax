@@ -10,7 +10,7 @@ urlpatterns = [
 
     # Game-related API Paths
     path('api/games/', GameListView.as_view(), name='games-list'),
-    path('api/games/<int:pk>/', GameRetrieveView.as_view(), name='single-game-details'),
+    path('api/games/<slug:slug>/', GameRetrieveView.as_view(), name='single-game-details'),
 
     # Cart-related API paths
     path('api/cart/remove/<int:pk>/', RemoveFromCart.as_view(), name='remove-from-cart'),

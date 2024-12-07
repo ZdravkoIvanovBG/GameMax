@@ -18,10 +18,9 @@
                         TemplateMo and it is suitable for your gaming shop ecommerce websites. Feel free to use this for
                         any
                         purpose. Thank you.</p>
-                    <form id="qty" action="#">
-                        <input type="number" class="form-control" id="1" aria-describedby="quantity" placeholder="1">
-                        <button type="submit" class="my-color"><i class="fa fa-shopping-bag"></i> ADD TO CART</button>
-                    </form>
+                    <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD TO
+                        CART
+                    </button>
                     <ul>
                         <li><span>Game ID:</span> {{ object.game_abbreviation }}</li>
                         <li><span>Genre:</span> {{ object.genre }}
@@ -91,4 +90,7 @@
         </div>
     </div>
 
+    {% block extra_script %}
+        <script type="module" src="{% static 'assets/js/shopping-cart/cart.js' %}"></script>
+    {% endblock %}
 {% endblock %}

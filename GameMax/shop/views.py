@@ -41,6 +41,7 @@ class GameDetailView(DetailView):
 class GameRetrieveView(RetrieveAPIView):
     serializer_class = GameSerializer
     queryset = Game.objects.all()
+    lookup_field = 'slug'
 
 
 class CartView(RetrieveAPIView):
@@ -52,6 +53,20 @@ class CartView(RetrieveAPIView):
         cart, created = Cart.objects.get_or_create(user=user)
 
         return cart
+
+
+# @extend_schema(
+#     tags=['shop'],
+#     summary='List Cart Items',
+#     request=CartItemSerializer
+# )
+# class CartItemsAPIView(APIView):
+#     def get(self, request):
+#         cart_items = CartItem.objects.filter(cart__user=request.user)
+#
+#         serializer = CartItemSerializer(cart_items, many=True)
+#
+#         return Response(serializer.data)
 
 
 @extend_schema(
