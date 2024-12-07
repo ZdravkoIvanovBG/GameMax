@@ -577,14 +577,6 @@ footer {
     border-radius: 10px;
 }
 
-.food-title {
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    margin: 0;
-}
-
 .game-container {
     display: flex;
     flex-direction: row;
@@ -598,138 +590,76 @@ footer {
     width: 40%;
 }
 
+.game-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px;
+}
+
 .game-card {
-    width: 430px;
-    height: 56vh;
-    background-color: #000;
-    border: 2px solid rgb(226, 29, 72);
-    border-radius: 15px;
+    width: 400px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 0px 0px rgb(226, 29, 72), 0 0px 0px rgb(226, 29, 72),
-    0 3px 5px rgb(226, 29, 72);
-    font-family: "Poppins", sans-serif;
-    color: #fff;
+    background-color: #1e1e1e;
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Card Image */
-.card-image img {
+.game-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 30px rgba(255, 204, 0, 0.35);
+}
+
+.game-card-image img {
     width: 100%;
-    height: 24vh;
     display: block;
+    height: 24vh;
 }
 
-/* Card Content */
-.card-content {
-    padding: 24px;
-    text-align: left;
+.game-card-content {
+    padding: 1.5rem;
+    text-align: center;
 }
 
-/* Title */
 .game-title {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-/* Price Section */
-.price-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.new-price {
-    color: #fff;
+    font-size: 1.25rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff;
 }
 
-/* Rating Section */
-.rating-section {
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1rem;
+}
+
+.game-price {
+    font-weight: bold;
+    color: #4caf50;
+    font-size: 17px;
+}
+
+.game-rating {
+    color: rgb(255, 204, 0);
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 5px;
+    font-weight: 550;
 }
 
-.rating-stars {
-    color: #fff;
-    margin-right: 5px;
-    font-weight: 700;
-    font-size: 18px;
+.star-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0.25rem;
 }
 
-.reviews {
+.game-reviews {
     color: #aaa;
-}
-
-/* Description */
-.game-card-description {
-    font-size: 14px;
-    line-height: 1.4;
-    margin-bottom: 10px;
-}
-
-/* Read More Link */
-.read-more {
-    color: rgb(226, 29, 72);
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.read-more:hover {
-    text-decoration: underline;
-}
-
-/* Buttons */
-.card-buttons {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 0.35rem;
-}
-
-.add-to-cart,
-.submit-review {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.add-to-cart {
-    background-color: rgb(226, 29, 72);
-    color: #fff;
-}
-
-.submit-review {
-    background: rgb(217, 102, 255);
-    background: linear-gradient(
-            90deg,
-            rgba(217, 102, 255, 1) 0%,
-            rgba(162, 0, 255, 1) 33%,
-            rgba(98, 0, 255, 1) 100%
-    );
-    color: #fff;
-}
-
-.add-to-cart:hover {
-    opacity: 0.75;
-}
-
-.submit-review:hover {
-    opacity: 0.75;
-}
-
-.price-rating-section {
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 0.1rem;
 }
 
 .hover-animation {
@@ -750,18 +680,6 @@ footer {
     .game-card {
         height: 60vh;
     }
-}
-
-.game-section {
-    display: flex;
-    gap: 2em;
-    flex-wrap: wrap;
-}
-
-.game-card {
-    flex: 1 1 calc(33.333% - 2em);
-    max-width: calc(33.333% - 2em);
-    box-sizing: border-box;
 }
 
 .profile-button-li {

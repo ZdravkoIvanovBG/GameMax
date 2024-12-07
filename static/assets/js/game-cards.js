@@ -21,136 +21,82 @@ async function fetchGameData(franchise = null) {
 }
 
 function renderGameCard(game) {
-    // Select the container where the game cards will be displayed
-    const gameContainer = document.querySelector('.game-section');
+    const gameContainer = document.querySelector(".game-section");
 
-    // Create the main game card container
-    const gameCard = document.createElement('div');
-    gameCard.classList.add('game-card');
+    const card = document.createElement("div");
+    card.classList.add("game-card");
+    card.onclick = () => {
+        window.location.href = `game/${game.slug}/`;
+    };
 
-    // Create hover animation wrapper
-    const hoverAnimation = document.createElement('div');
-    hoverAnimation.classList.add('hover-animation');
-
-    // Add the card image
-    const cardImage = document.createElement('div');
-    cardImage.classList.add('card-image');
-    const img = document.createElement('img');
+    const cardImage = document.createElement("div");
+    cardImage.classList.add("game-card-image");
+    const img = document.createElement("img");
     img.src = game.game_image;
-    img.alt = game.title;
+    img.alt = `Image of ${game.title}`;
     cardImage.appendChild(img);
-    hoverAnimation.appendChild(cardImage);
 
-    // Add the card content
-    const cardContent = document.createElement('div');
-    cardContent.classList.add('card-content');
+    // Create the content section
+    const cardContent = document.createElement("div");
+    cardContent.classList.add("game-card-content");
 
-    const title = document.createElement('h2');
-    title.classList.add('game-title');
+    // Game title
+    const title = document.createElement("h3");
+    title.classList.add("game-title");
     title.textContent = game.title;
 
-    if (game.title.length > 31) {
-        title.classList.add('long-title');
-    }
+    // Game info (price, rating, reviews)
+    const info = document.createElement("div");
+    info.classList.add("game-info");
 
-    // Add the price and rating section
-    const priceRatingSection = document.createElement('div');
-    priceRatingSection.classList.add('price-rating-section');
+    const price = document.createElement("span");
+    price.classList.add("game-price");
+    price.textContent = `$${game.price}`; // Format price to two decimals
 
-    const priceSection = document.createElement('div');
-    priceSection.classList.add('price-section');
-    const price = document.createElement('span');
-    price.classList.add('new-price');
-    price.textContent = `$${game.price}`;
-    priceSection.appendChild(price);
+    const ratingPanel = document.createElement('span');
+    ratingPanel.classList.add('game-rating');
 
-    const ratingSection = document.createElement('div');
-    ratingSection.classList.add('rating-section');
-    const ratingImg = document.createElement('img');
-    ratingImg.src = "/static/assets/images/star-svgrepo-com.svg";
-    ratingImg.alt = "";
-    ratingImg.style.cssText = "height: 20px; width: 20px; margin-bottom: 0.2rem; margin-right: 0.2rem;";
-    const ratingStars = document.createElement('span');
-    ratingStars.classList.add('rating-stars');
+    const starIcon = document.createElement('img');
+    starIcon.src = '/static/assets/images/star-rating.png';
+    starIcon.alt = "";
+    starIcon.classList.add('star-icon');
 
-    let rating = 0;
+    let tempRating = 0;
 
     if (game.reviews.length > 0) {
         for (let i = 0; i < game.reviews.length; i++) {
-            rating += game.reviews[i].rating;
+            tempRating += game.reviews[i].rating;
         }
 
-        rating = (rating / game.reviews.length).toFixed(2);
+        tempRating = (tempRating / game.reviews.length).toFixed(2);
     }
 
-    ratingStars.textContent = rating;
-    const reviews = document.createElement('span');
-    reviews.classList.add('reviews');
-    reviews.textContent = `• ${game.reviews.length} reviews`;
+    const rating = document.createElement("span");
+    rating.classList.add("game-rating");
+    rating.textContent = tempRating;
 
-    ratingSection.appendChild(ratingImg);
-    ratingSection.appendChild(ratingStars);
-    ratingSection.appendChild(reviews);
+    ratingPanel.appendChild(starIcon);
+    ratingPanel.appendChild(rating);
 
-    priceRatingSection.appendChild(priceSection);
-    priceRatingSection.appendChild(ratingSection);
+    const reviews = document.createElement("span");
+    reviews.classList.add("game-reviews");
+    reviews.textContent = `${game.reviews.length} reviews`;
 
-    // Add description
-    const description = document.createElement('p');
-    description.classList.add('game-card-description');
-    description.textContent = game.welcome_message;
+    // Append price, rating, and reviews to the info section
+    info.appendChild(price);
+    info.appendChild(ratingPanel);
+    info.appendChild(reviews);
 
-    // Add "Read More" link
-    const readMore = document.createElement('a');
-    readMore.href = `game/${game.slug}/`;
-    readMore.classList.add('read-more');
-    readMore.textContent = 'Game Details';
-
-    // Add buttons
-    const cardButtons = document.createElement('div');
-    cardButtons.classList.add('card-buttons');
-    const addToCartButton = document.createElement('button');
-    addToCartButton.classList.add('add-to-cart');
-    addToCartButton.textContent = 'Add To Cart';
-    // addToCartButton.setAttribute('data-game-id', game.id);
-    addToCartButton.addEventListener('click', () => {
-        addToCart(game.id);
-    });
-
-    const submitReviewButton = document.createElement('button');
-    submitReviewButton.classList.add('submit-review');
-    submitReviewButton.textContent = 'Submit A Review';
-
-    const reviewPopup = document.getElementById("review-popup");
-    const overlay = document.getElementById("overlay");
-
-    submitReviewButton.addEventListener("click", () => {
-        reviewPopup.style.display = "block";
-        overlay.style.display = "block";
-        document.body.style.overflow = "hidden";
-
-        const reviewForm = document.getElementById('review-form');
-        reviewForm.setAttribute('data-game-id', game.id);
-    });
-
-    cardButtons.appendChild(addToCartButton);
-    cardButtons.appendChild(submitReviewButton);
-
-    // Append everything to the card content
+    // Append title and info to the card content
     cardContent.appendChild(title);
-    cardContent.appendChild(priceRatingSection);
-    cardContent.appendChild(description);
-    cardContent.appendChild(readMore);
-    cardContent.appendChild(cardButtons);
+    cardContent.appendChild(info);
 
-    // Append the content to the hover animation
-    hoverAnimation.appendChild(cardContent);
+    // Append image and content to the main card
+    card.appendChild(cardImage);
+    card.appendChild(cardContent);
 
-    // Append the hover animation to the game card
-    gameCard.appendChild(hoverAnimation);
-
-    // Append the game card to the container
-    gameContainer.appendChild(gameCard);
+    // Append the card to the container
+    gameContainer.appendChild(card);
 }
 
 async function renderAllGames(franchise = null) {
