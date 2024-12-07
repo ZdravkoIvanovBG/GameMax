@@ -55,7 +55,7 @@
                                         <button class="nav-link text-white" id="reviews-tab" data-bs-toggle="tab"
                                                 data-bs-target="#reviews"
                                                 type="button" role="tab" aria-controls="reviews" aria-selected="false">
-                                            Reviews (3)
+                                            Reviews ({{ object.review_set.all|length }})
                                         </button>
                                     </li>
                                 </ul>
@@ -66,19 +66,22 @@
                                     <p>{{ object.description }}</p>
                                 </div>
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                                    <p>Coloring book air plant shabby chic, crucifix normcore raclette cred swag artisan
-                                        activated
-                                        charcoal. PBR&B fanny pack pok pok gentrify truffaut kitsch helvetica jean
-                                        shorts
-                                        edison bulb
-                                        poutine next level humblebrag la croix adaptogen. <br><br>Hashtag poke literally
-                                        locavore, beard
-                                        marfa kogi bruh artisan succulents seitan tonx waistcoat chambray taxidermy.
-                                        Same
-                                        cred meggings 3
-                                        wolf moon lomo irony cray hell of bitters asymmetrical gluten-free art party raw
-                                        denim chillwave
-                                        tousled try-hard succulents street art.</p>
+                                    <div class="reviews-panel">
+                                        {% for review in object.review_set.all %}
+                                            <div class="review-item">
+                                                <div class="review-header">
+                                                    <span class="review-rating">⭐{{ review.rating }}</span>
+                                                    <span class="review-author">{{ review.user.profile.full_name }}</span>
+                                                </div>
+                                                <p class="review-text">{{ review.review_text }}</p>
+                                            </div>
+                                        {% empty %}
+                                            <p class="no-reviews">No reviews yet. Be the first to share your
+                                                thoughts!</p>
+                                            <a href="{% url 'shop' %}?franchise={{ object.franchise }}"
+                                               class="no-review-submit">Submit</a>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>

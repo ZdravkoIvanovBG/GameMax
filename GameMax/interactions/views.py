@@ -12,6 +12,9 @@ class OrderPageView(ListView):
     model = Order
     template_name = 'shop/orders.html'
 
+    def get_queryset(self):
+        return Order.objects.filter(buyer=self.request.user)
+
 
 class OrderCreateView(CreateAPIView):
     queryset = Order.objects.all()
@@ -42,6 +45,14 @@ class OrderCreateView(CreateAPIView):
         serializer = self.get_serializer(order)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class UserReviewListView(ListView):
+    model = Review
+    template_name = 'reviews/reviews.html'
+
+    def get_queryset(self):
+        return Review.objects.filter(user=self.request.user).order_by('-created_at')[:15]
 
 
 class ReviewListView(ListAPIView):

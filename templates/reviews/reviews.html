@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% load stars_repr %}
+
+{% block content %}
+    <div class="reviews-body">
+        <div class="reviews-overlay">
+            <div class="container reviews-container">
+                <div class="header">
+                    <h1>Your Reviews</h1>
+                    <p>Here are the last 15 reviews you've submitted.</p>
+                </div>
+
+                {% if review_list %}
+                    {% for review in review_list %}
+                        <div class="review-card">
+                            <div class="game-title">
+                                <span>Game Title: <strong>{{ review.game.title }}</strong></span>
+                            </div>
+                            <div class="rating-section">
+                                <span class="rating">{{ review.rating|stars_repr }}</span>
+                                <span>Rating: {{ review.rating }}/5</span>
+                            </div>
+                            <p class="review-text">
+                                {{ review.review_text }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-reviews">
+                        <p>You haven't submitted any reviews yet. Start playing games and share your feedback!</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

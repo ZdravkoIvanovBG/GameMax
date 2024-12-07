@@ -67,6 +67,8 @@ async function ReviewSubmission() {
             throw new Error('Failed to submit review.');
         }
 
+        window.location.href = '/interactions/reviews/';
+
     } catch (error) {
         console.error('Error submitting review: ', error);
     }

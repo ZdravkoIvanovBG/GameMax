@@ -1503,3 +1503,153 @@ h2 {
     transform: scale(1.08);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
+
+.tab-content {
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.reviews-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-item {
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18.5px;
+    color: #ffcc00;
+}
+
+.review-rating {
+    font-weight: bold;
+}
+
+.review-author {
+    font-style: italic;
+    color: #888;
+}
+
+.review-text {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.no-reviews {
+    text-align: center;
+    font-size: 16px;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+.no-review-submit {
+    position: relative;
+    margin: 0 auto;
+    padding: 0.5em;
+    font-size: 18px;
+    border-radius: 10%;
+    color: white;
+    background: linear-gradient(90deg, rgba(217, 102, 255, 1) 0%, rgba(47, 0, 91, 1) 0%, rgba(62, 0, 162, 1) 100%);
+    transition: all 0.3s ease;
+}
+
+.no-review-submit:hover {
+    transform: scale(1.05);
+}
+
+.reviews-body {
+    background-color: rgb(23, 23, 23);
+    background-image: url(../images/horizon.jpg);
+    background-position: center;
+    background-size: cover;
+    z-index: 3;
+    overflow: hidden;
+    position: relative;
+}
+
+.reviews-container {
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 8.5em 20px 20px 20px;
+}
+
+.reviews-container .header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reviews-container .header h1,
+.reviews-container .header p {
+    color: white;
+}
+
+.reviews-container .review-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.reviews-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1 !important;
+    width: 100%;
+    height: 100%;
+}
+
+.reviews-container .review-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+.reviews-container .review-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.reviews-container .review-card .game-title {
+    font-weight: bold;
+}
+
+.reviews-container .review-card .rating {
+    color: #ffd700;
+}
+
+.reviews-container .review-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.reviews-container .review-card .rating-section {
+    margin-bottom: 10px;
+}
+
+.reviews-container .review-card .review-text {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.reviews-container .no-reviews p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
+    padding-top: 10em;
+}

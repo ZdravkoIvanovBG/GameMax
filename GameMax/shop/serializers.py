@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from GameMax.interactions.models import Review
 from GameMax.interactions.serializers import ReviewSerializer
 from GameMax.shop.models import Franchise, Game, Cart, CartItem
 
@@ -12,10 +13,17 @@ class FranchiseSerializer(serializers.ModelSerializer):
 
 
 class GameSerializer(serializers.ModelSerializer):
+    reviews = serializers.SerializerMethodField()
+
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = ['id', 'title', 'price', 'welcome_message', 'description', 'game_image', 'franchise', 'pegi',
+                  'game_abbreviation', 'genre', 'slug', 'reviews']
         read_only_fields = ['id', 'reviews']
+
+    def get_reviews(self, obj):
+        reviews = Review.objects.filter(game=obj.id)
+        return ReviewSerializer(reviews, many=True).data
 
 
 class GameFranchiseSerializer(serializers.ModelSerializer):
