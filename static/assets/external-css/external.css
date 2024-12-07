@@ -503,7 +503,7 @@ footer {
 .featured-text span {
     font-size: 48px;
     font-weight: 600;
-    color: rgb(226, 26, 72);
+    color: rgb(255, 204, 0);
 }
 
 .shop-heading {
@@ -517,7 +517,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgb(226, 26, 72);
+    border-bottom: 1px solid rgb(255, 204, 0);
 }
 
 .overlay-shopping {
@@ -532,23 +532,35 @@ footer {
 }
 
 .game-item {
-    width: 130px;
+    width: 100px;
     background-color: rgb(23, 23, 23);
-    border: 2px solid rgb(226, 29, 72);
+    border: 2px solid rgb(255, 204, 0);
     border-radius: 10px;
     text-align: center;
     padding: 5px;
     margin-left: 0.5em;
-    box-shadow: 0 0 15px rgb(226, 29, 72), 0 0 7.5px rgb(226, 29, 72);
+    box-shadow: 0 0 15px rgb(255, 204, 0), 0 0 7.5px rgb(255, 204, 0);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     aspect-ratio: 1/1;
     position: relative;
     overflow: hidden;
 }
 
+.franchise-filter {
+    text-align: center;
+    color: white;
+    padding-top: 1em;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.franchise-filter span {
+    color: rgb(255, 204, 0);
+}
+
 .game-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgb(226, 29, 72), 0 0 20px rgb(226, 29, 72);
+    box-shadow: 0 0 15px rgb(255, 204, 0), 0 0 20px rgb(255, 204, 0);
 }
 
 @media (max-width: 1200px) {
@@ -585,9 +597,8 @@ footer {
     justify-content: center;
     gap: 2em;
     margin: 0 auto;
-    margin-top: 3em;
+    margin-top: 2em;
     max-width: 100%;
-    width: 40%;
 }
 
 .game-section {
@@ -1327,7 +1338,6 @@ h2 {
 
 .rating {
     display: flex;
-    justify-content: center;
     align-items: center;
     grid-gap: 0.5rem;
     font-size: 2rem;

@@ -12,8 +12,7 @@ async function fetchGameData(franchise = null) {
             throw new Error(`HTTP Error! Status: ${response.status}`)
         }
 
-        const games = await response.json();
-        return games;
+        return await response.json();
     } catch (error) {
         console.error('Error fetching game data: ', error);
         return [];
@@ -34,6 +33,7 @@ function renderGameCard(game) {
     const img = document.createElement("img");
     img.src = game.game_image;
     img.alt = `Image of ${game.title}`;
+    img.loading = 'lazy';
     cardImage.appendChild(img);
 
     // Create the content section
@@ -60,6 +60,7 @@ function renderGameCard(game) {
     starIcon.src = '/static/assets/images/star-rating.png';
     starIcon.alt = "";
     starIcon.classList.add('star-icon');
+    starIcon.loading = 'lazy';
 
     let tempRating = 0;
 
@@ -95,8 +96,7 @@ function renderGameCard(game) {
     card.appendChild(cardImage);
     card.appendChild(cardContent);
 
-    // Append the card to the container
-    gameContainer.appendChild(card);
+    return card;
 }
 
 async function renderAllGames(franchise = null) {
@@ -108,7 +108,14 @@ async function renderAllGames(franchise = null) {
 
     const games = await fetchGameData(franchise);
 
-    games.forEach(game => renderGameCard(game));
+    const fragment = document.createDocumentFragment();
+
+    games.forEach(game => {
+        const card = renderGameCard(game);
+        fragment.appendChild(card);
+    });
+
+    gameContainer.appendChild(fragment);
 }
 
 document.querySelectorAll('.game-item').forEach(card => {
