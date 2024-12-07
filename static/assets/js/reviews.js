@@ -1,3 +1,5 @@
+import {getCSRFToken, getGameId, getGameSlugFromURL} from "./shopping-cart/cart.js";
+
 const allStar = document.querySelectorAll(".rating .star");
 const ratingValue = document.querySelector(".rating input");
 
@@ -24,11 +26,19 @@ allStar.forEach((item, idx) => {
 
 const reviewPopup = document.getElementById("review-popup");
 const overlay = document.getElementById("overlay");
+const reviewBtn = document.getElementById('review-btn');
 const cancelBtn = document.getElementById("cancel-btn");
 const stars = document.querySelectorAll(".star");
 const ratingInput = document.querySelector('[name="rating"]');
 
+reviewBtn.addEventListener("click", openPopup);
 cancelBtn.addEventListener("click", closePopup);
+
+function openPopup() {
+    reviewPopup.style.display = "block";
+    overlay.style.display = "block";
+    document.body.style.overflow = "hidden";
+}
 
 function closePopup() {
     reviewPopup.style.display = "none";
@@ -42,12 +52,13 @@ const reviewInput = reviewForm.querySelector('textarea[name="opinion"]');
 async function ReviewSubmission() {
     const rating = ratingInput.value;
     const review_text = reviewInput.value;
-    const gameId = reviewForm.getAttribute('data-game-id');
 
-    if (!rating) {
-        alert("Please provide a rating");
-        return;
-    }
+    const gameSlug = getGameSlugFromURL();
+
+    const gameId = await getGameId(gameSlug);
+
+    console.log(gameSlug);
+    console.log(gameId);
 
     try {
         const response = await fetch('/interactions/api/reviews/create/', {
@@ -76,6 +87,7 @@ async function ReviewSubmission() {
 
 const submitReviewSubmissionButton = document.getElementById('submit-btn');
 
-submitReviewSubmissionButton.addEventListener('click', () => {
-    ReviewSubmission();
+submitReviewSubmissionButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await ReviewSubmission();
 })

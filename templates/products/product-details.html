@@ -21,6 +21,8 @@
                     <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD TO
                         CART
                     </button>
+                    <button id="review-btn" class="review-button"><i class="fa-solid fa-star"></i>Submit A Review
+                    </button>
                     <ul>
                         <li><span>Game ID:</span> {{ object.game_abbreviation }}</li>
                         <li><span>Genre:</span> {{ object.genre }}
@@ -77,8 +79,6 @@
                                         {% empty %}
                                             <p class="no-reviews">No reviews yet. Be the first to share your
                                                 thoughts!</p>
-                                            <a href="{% url 'shop' %}?franchise={{ object.franchise }}"
-                                               class="no-review-submit">Submit</a>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -90,7 +90,29 @@
         </div>
     </div>
 
+    <div class="review-overlay" id="overlay">
+        <div class="review-wrapper" id="review-popup">
+            <h3 class="text-white">Submit Your Review About The Game</h3>
+            <form action="#" id="review-form">
+                <div class="rating">
+                    <input type="number" name="rating" hidden>
+                    <i class='bx bx-star star' style="--i: 0;"></i>
+                    <i class='bx bx-star star' style="--i: 1;"></i>
+                    <i class='bx bx-star star' style="--i: 2;"></i>
+                    <i class='bx bx-star star' style="--i: 3;"></i>
+                    <i class='bx bx-star star' style="--i: 4;"></i>
+                </div>
+                <textarea name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+                <div class="btn-group">
+                    <button type="submit" class="r-btn submit" id="submit-btn">Submit</button>
+                    <button type="button" class="r-btn cancel" id="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     {% block extra_script %}
         <script type="module" src="{% static 'assets/js/shopping-cart/cart.js' %}"></script>
+        <script type="module" src="{% static 'assets/js/reviews.js' %}"></script>
     {% endblock %}
 {% endblock %}

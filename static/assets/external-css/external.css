@@ -1371,6 +1371,7 @@ h2 {
 .rating {
     display: flex;
     align-items: center;
+    justify-content: center;
     grid-gap: 0.5rem;
     font-size: 2rem;
     color: #ffbd13;
@@ -1612,4 +1613,21 @@ h2 {
     font-size: 1.2rem;
     color: #fff;
     padding-top: 10em;
+}
+
+.review-button {
+    position: relative;
+    margin-left: 0.5em;
+    background: linear-gradient(
+            90deg,
+            rgba(217, 102, 255, 1) 0%,
+            rgba(162, 0, 255, 1) 33%,
+            rgba(98, 0, 255, 1) 100%
+    );
+}
+
+.review-button:hover,
+#add-to-cart:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
 }

@@ -21,6 +21,7 @@ async function getGameId(slug) {
         const game = await response.json();
 
         return game.id;
+
     } catch (error) {
         console.error('Error fetching game details:', error);
     }
