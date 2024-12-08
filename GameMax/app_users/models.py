@@ -30,6 +30,9 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     objects = AppUserManager()
 
+    class Meta:
+        verbose_name = 'User'
+
 
 class Profile(models.Model):
     full_name = models.CharField(

@@ -10,4 +10,8 @@ class FranchiseAdmin(admin.ModelAdmin):
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title', 'price', 'franchise', 'pegi', 'genre']
+
+    list_filter = ['pegi', 'genre']
+
+    search_fields = ['title']
