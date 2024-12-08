@@ -20,9 +20,12 @@
     <h1 class="franchise-filter"><span>Franchise</span> Filter</h1>
     <div class="game-container anim-bottom">
         {% for f in franchise_list %}
-            <div class="game-item" data-franchise="{{ f.name }}">
-                <button style="border: none; background-color: rgb(23, 23, 23); padding: 0; margin: 0;"><img
-                        src="{{ f.franchise_image.url }}" alt="Far Cry" class="game-image"></button>
+            <div class="single-game-container">
+                <div class="game-item" data-franchise="{{ f.name }}">
+                    <button style="border: none; background-color: rgb(23, 23, 23); padding: 0; margin: 0;"><img
+                            src="{{ f.franchise_image.url }}" alt="Far Cry" class="game-image"></button>
+                </div>
+                <div class="franchise-title"><p>{{ f.name }}</p></div>
             </div>
         {% endfor %}
     </div>
