@@ -215,11 +215,11 @@ body {
 
 .section-heading h2 em {
     font-style: normal;
-    color: #0071f8;
+    color: red;
 }
 
 .section-heading h6 {
-    color: #ee626b;
+    color: rgb(255, 175, 0);
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 700;
@@ -229,7 +229,7 @@ body {
     display: inline-block;
     background-color: #ee626b;
     text-transform: uppercase;
-    color: #fff;
+    color: rgb(128, 128, 128);
     font-size: 14px;
     font-weight: 600;
     height: 50px;
@@ -1102,7 +1102,7 @@ CTA Style
 }
 
 .cta::after {
-    background-image: url(../images/cta-bg.jpg);
+    background-image: url(../images/far_cry_5_background.jpg);
     max-width: 550px;
     max-height: 510px;
     width: 100%;
@@ -1170,7 +1170,7 @@ CTA Style
     height: 50px;
     line-height: 50px;
     background-color: #ee626b;
-    color: #fff;
+    color: rgb(128, 128, 128);
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 500;

@@ -9,8 +9,9 @@
                     <div class="row">
                         <div class="col-lg-6 align-self-center">
                             <div class="caption header-text">
-                                <h2 class="anim">BEST GAMING SHOP <span class="text-danger">EVER!</span></h2>
-                                <p class="anim">Your ultimate destination for the latest and greatest video games, where
+                                <h2 class="anim">BEST GAMING SHOP <span class="ever-text">EVER!</span></h2>
+                                <p class="anim" style="font-size: 18px;">Your ultimate destination for the latest and
+                                    greatest video games, where
                                     we
                                     bring you an
                                     unbeatable
@@ -18,20 +19,35 @@
                                     for
                                     gamers of all
                                     levels!</p>
-                                <div class="search-input anim">
-                                    <form id="search" action="#">
-                                        <input type="text" placeholder="Game Name" id='searchText' name="searchKeyword"
-                                               onkeypress="handle"/>
-                                        <button role="button" class="fw-bold my-color">Search Now</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 offset-lg-2 anim">
-                            <div class="right-image">
-                                <img src="{% static 'assets/images/start-screen-image.jpg' %}" alt="">
-                                <span class="price">$22</span>
-                                <span class="offer my-color">-40%</span>
+                            <h2 class="text-white">OUR <span style="color: rgb(255,204,0);">BEST DEALS</span></h2>
+                            <div class="carousel">
+                                <button class="prev-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="carousel-wrapper">
+                                    <div class="carousel-images">
+                                        <a href="{% url 'game-details' slug='far-cry-6' %}"><img
+                                                src="{% static 'assets/images/far_cry_6_image.jpg' %}" alt=""></a>
+                                        <a href="{% url 'game-details' slug='black-myth-wukong' %}"><img
+                                                src="{% static 'assets/images/black_myth_wukong_carousel_2.jpeg' %}"
+                                                alt=""></a>
+                                        <a href="{% url 'game-details' slug='elden-ring' %}"><img
+                                                src="{% static 'assets/images/elden_ring_carousel_3.jpg' %}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="discount-badge-price">
+                                        <div class="price-details">
+                                            <span class="original-price"></span>
+                                            <span class="discounted-price"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="next-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -100,142 +116,34 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2><span class="text-white">Our Featured</span> <span class="text-success">Game</span> <span
-                                class="text-danger">Sequences</span></h2>
+                        <h2><span class="text-white">Our Featured</span><span style="color: rgb(255,204,0)"> Game Sequences</span>
+                        </h2>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="main-button">
-                        <a href="../shop/shop.html" class="my-color">View All</a>
+                        <a href="{% url 'shop' %}" class="my-color-darker">View All</a>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6" id="top">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price"><em>$28</em>$20</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Singleplayer</span>
-                            <h4>Assassin's Creed</h4>
-                            <a href="../products/product-details.html" class="my-color"><i
-                                    class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6" id="top">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
+                {% for franchise_game in franchise_list %}
+                    <div class="col-lg-3 col-md-6" id="top">
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="{% url 'shop' %}?franchise={{ franchise_game.name }}"><img
+                                        src="{{ franchise_game.franchise_image.url }}"
+                                        alt=""></a>
+                            </div>
+                            <div class="down-content">
+                                <span class="category">Explore The Franchise</span>
+                                <h4>{{ franchise_game.name }}</h4>
+                                <a href="{% url 'shop' %}?franchise={{ franchise_game.name }}"
+                                   class="my-color-darker"><i
+                                        class="fa fa-shopping-bag"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6" id="top">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6" id="top">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img
-                                    src="{% static 'assets/images/sequences.jpg' %}"
-                                    alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="thumb">
-                            <a href="../products/product-details.html"><img src="{% static '' %}" alt=""></a>
-                            <span class="price">$44</span>
-                        </div>
-                        <div class="down-content">
-                            <span class="category">Action</span>
-                            <h4>Assasin Creed</h4>
-                            <a href="../products/product-details.html"><i class="fa fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -376,4 +284,8 @@
             </div>
         </div>
     </div>
+
+    {% block extra_script %}
+        <script src="{% static 'assets/js/carousel.js' %}"></script>
+    {% endblock %}
 {% endblock %}

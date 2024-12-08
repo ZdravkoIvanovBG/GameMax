@@ -1,14 +1,15 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from rest_framework.generics import RetrieveAPIView
 
 from GameMax.home.utils import contact_form_message
-from GameMax.shop.models import Cart
+from GameMax.shop.models import Cart, Franchise
 from GameMax.shop.serializers import CartSerializer
 
 
-class HomePage(TemplateView):
+class HomePage(ListView):
+    model = Franchise
     template_name = 'home/home_page.html'
 
 
