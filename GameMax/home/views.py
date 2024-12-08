@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from rest_framework.generics import RetrieveAPIView
 
@@ -30,15 +31,9 @@ def submit_form(request):
         result = contact_form_message(name, last_name, email, subject, message)
 
         if result.status_code == 200:
-            return JsonResponse({
-                'status': 'success',
-                'message': 'Message sent successfully!'
-            })
+            return redirect('/contact-us?success=true')
         else:
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Failed to send the message.'
-            })
+            return redirect('/contact-us?success=false')
 
     return JsonResponse({
         'status': 'error',

@@ -1,14 +1,33 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block extra_styles %}
-    <style>
-
-    </style>
-{% endblock %}
-
 {% block content %}
     <div class="overlay-body">
+        <div id="customAlertMessage" class="alertMessage">
+            <div class="alertMessage-content" id="alertMessageContent">
+                <span class="close" id="closeAlertMessage">&times;</span>
+                <div class="alertMessage-header" id="alertMessageHeader"></div>
+                <div class="alertMessage-body">
+                    <p class="text-white" id="alertMessageText"></p>
+                </div>
+            </div>
+        </div>
+
+        {% if request.GET.success == "true" %}
+            <script type="text/javascript">
+                document.getElementById('customAlertMessage').style.display = 'flex';
+                document.getElementById('alertMessageText').textContent = 'Your message has been sent successfully!';
+                document.getElementById('alertMessageContent').classList.add('success');
+                document.getElementById('alertMessageHeader').textContent = 'Success!';
+            </script>
+        {% elif request.GET.success == "false" %}
+            <script type="text/javascript">
+                document.getElementById('customAlertMessage').style.display = 'flex';
+                document.getElementById('alertMessageText').textContent = 'Oops! Something went wrong.\nPlease Try Again';
+                document.getElementById('alertMessageContent').classList.add('error');
+                document.getElementById('alertMessageHeader').textContent = 'Error!';
+            </script>
+        {% endif %}
         <div class="overlay-contact">
             <div class="contact-page section margin-none">
                 <div class="container">
@@ -107,4 +126,7 @@
         </div>
     </div>
 
+    {% block extra_script %}
+        <script src="{% static 'assets/js/alerts.js' %}"></script>
+    {% endblock %}
 {% endblock %}
