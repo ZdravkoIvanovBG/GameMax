@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, DestroyAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -19,6 +19,7 @@ class ShopPageView(ListView):
 
 class GameListView(ListAPIView):
     serializer_class = GameSerializer
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         queryset = Game.objects.all()

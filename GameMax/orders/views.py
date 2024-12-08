@@ -1,6 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from GameMax.orders.models import Order
@@ -8,7 +10,7 @@ from GameMax.orders.serializers import OrderSerializer
 from GameMax.shop.models import CartItem
 
 
-class OrderPageView(ListView):
+class OrderPageView(LoginRequiredMixin, ListView):
     model = Order
     template_name = 'shop/orders.html'
 
@@ -19,6 +21,7 @@ class OrderPageView(ListView):
 class OrderCreateView(CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         user = request.user

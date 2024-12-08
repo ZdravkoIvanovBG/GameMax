@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView
@@ -8,7 +9,7 @@ from GameMax.reviews.serializers import ReviewSerializer
 from GameMax.shop.models import Game
 
 
-class UserReviewListView(ListView):
+class UserReviewListView(LoginRequiredMixin, ListView):
     model = Review
     template_name = 'reviews/reviews.html'
 

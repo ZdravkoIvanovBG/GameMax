@@ -54,7 +54,10 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 }
 
 SPECTACULAR_SETTINGS = {
@@ -156,3 +159,7 @@ AUTH_USER_MODEL = 'app_users.AppUser'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
+
+MAILJET_API_KEY = '029b0fcaddeefaeb02e4dc3156553689'
+
+MAILJET_SECRET_KEY = '93f98bd3aa100ce2b49e85996d658571'

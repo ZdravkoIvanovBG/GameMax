@@ -36,11 +36,11 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
     form_class = ProfileEditForm
     template_name = 'app_users/profile_page.html'
 
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.pk != kwargs['pk']:
-            return HttpResponseForbidden  # TODO: Make 403.html page
-
-        return super().dispatch(request, *args, **kwargs)
+    # def dispatch(self, request, *args, **kwargs):
+    #     if request.user.pk != kwargs['pk']:
+    #         return HttpResponseForbidden  # TODO: Make 403.html page
+    #
+    #     return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy(
