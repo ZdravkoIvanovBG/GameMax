@@ -78,7 +78,7 @@ async function ReviewSubmission() {
             throw new Error('Failed to submit review.');
         }
 
-        window.location.href = '../../../GameMax/reviews/';
+        window.location.href = '/reviews/';
 
     } catch (error) {
         console.error('Error submitting review: ', error);

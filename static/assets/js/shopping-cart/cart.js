@@ -1,7 +1,7 @@
 const API_URLS = {
     cart: '/api/cart/',
     gameDetails: slug => `/shop/api/games/${slug}/`,
-    checkout: '/interactions/api/checkout/',
+    checkout: '/orders/api/checkout/',
 }
 
 function showError(message) {
@@ -59,7 +59,7 @@ async function checkout() {
             throw new Error('Failed to complete checkout');
         }
 
-        window.location.href = '../../../../GameMax/orders/';
+        window.location.href = '/orders/';
     } catch (error) {
         console.error('Error during checkout: ', error);
         alert('Checkout failed. Please try again.');
