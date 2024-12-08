@@ -50,13 +50,12 @@
 
                 {% if not request.user.profile.profile_picture %}
                     <div class="avatar">
-                        <img src="{% static 'assets/images/user.png' %}" alt="User Avatar"/>
+                        <img id="image_preview" src="{% static 'assets/images/user.png' %}" alt="User Avatar"/>
                     </div>
                 {% else %}
                     <div class="avatar">
-                        <img src="{{ request.user.profile.profile_picture.url }}" alt="User Avatar"/>
+                        <img id="image_preview" src="{{ request.user.profile.profile_picture.url }}" alt="User Avatar"/>
                     </div>
-
                 {% endif %}
 
                 <button type="submit" class="save-button my-color">Save</button>
@@ -67,12 +66,26 @@
     {% block extra_script %}
         <script>
             function triggerFileUpload(inputId) {
-                const fileInput = document.getElementById(inputId)
-
-                if (fileInput) {
-                    fileInput.click();
-                }
+                const fileInput = document.getElementById(inputId);
+                fileInput.click();
             }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelector('[name="profile_picture"]').addEventListener('change', function (event) {
+                    const file = event.target.files[0];
+
+                    if (file) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const preview = document.getElementById('image_preview');
+
+                            preview.src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
         </script>
     {% endblock %}
 {% endblock %}
