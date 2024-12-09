@@ -107,22 +107,20 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{% url 'wishlist' %}"
+                                               style="gap: 7px !important; padding-left: 16px;">
+                                                <i class="fa-regular fa-heart"></i> My Wishlist
+                                            </a>
+                                        </li>
+                                        <li>
                                             <form method="POST" action="{% url 'logout' %}">
                                                 {% csrf_token %}
-                                                {#                                                <a href="{% url 'logout' %}">#}
-                                                {#                                                    <i class="fas fa-sign-out-alt"></i> Log out#}
-                                                {#                                                </a>#}
                                                 <button type="submit"><i
                                                         class="fas fa-sign-out-alt"></i> Log Out
                                                 </button>
                                             </form>
                                         </li>
                                     </ul>
-                                    <div class="mode-toggle">
-                                        <h5>Mode</h5>
-                                        <button class="mode light">Light</button>
-                                        <button class="mode dark">Dark</button>
-                                    </div>
                                 </div>
                             </li>
                         {% else %}

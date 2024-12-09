@@ -57,9 +57,6 @@ async function ReviewSubmission() {
 
     const gameId = await getGameId(gameSlug);
 
-    console.log(gameSlug);
-    console.log(gameId);
-
     try {
         const response = await fetch('/reviews/api/reviews/create/', {
             method: 'POST',

@@ -56,20 +56,6 @@ class CartView(RetrieveAPIView):
         return cart
 
 
-# @extend_schema(
-#     tags=['shop'],
-#     summary='List Cart Items',
-#     request=CartItemSerializer
-# )
-# class CartItemsAPIView(APIView):
-#     def get(self, request):
-#         cart_items = CartItem.objects.filter(cart__user=request.user)
-#
-#         serializer = CartItemSerializer(cart_items, many=True)
-#
-#         return Response(serializer.data)
-
-
 @extend_schema(
     tags=['shop'],
     summary='Add To Cart',

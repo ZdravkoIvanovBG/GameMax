@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block content %}
+    <div class="wishlist-body">
+        <div class="wishlist-overlay">
+            <div class="wishlist-container">
+                <h2 class="wishlist-title">Your Wishlist</h2>
+                {% if wishlist_list %}
+                    {% for wishlist_item in wishlist_list %}
+                        <div class="wishlist-item">
+                            <a href="{% url 'game-details' wishlist_item.game.slug %}"><img
+                                    src="{{ wishlist_item.game.game_image.url }}" alt="Game Thumbnail"
+                                    class="wishlist-image"/></a>
+                            <!-- Game Details -->
+                            <div class="wishlist-details">
+                                <h3 class="wishlist-game-title">{{ wishlist_item.game.title }}</h3>
+                                <p class="wishlist-game-genre">
+                                    <strong>Genre:</strong> {{ wishlist_item.game.genre }}
+                                </p>
+                                <p class="wishlist-release-date">
+                                    <strong>Added On:</strong> {{ wishlist_item.added_at }}
+                                </p>
+                                <p class="wishlist-reviews">
+                                    <strong>PEGI:</strong> {{ wishlist_item.game.pegi }}
+                                </p>
+                            </div>
+
+                            <div class="wishlist-actions">
+                                <div class="wishlist-price">
+                                    <span class="current-wishlist-price">${{ wishlist_item.game.price }}</span>
+                                </div>
+                                <a href="{% url 'game-details' wishlist_item.game.slug %}" class="btn view-game-page">Game
+                                    Page</a>
+                                <button class="btn wishlist-remove-btn" data-id="{{ wishlist_item.id|escape }}">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h2 class="no-items-wishlist"> No Items In Your Wishlist </h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% block extra_script %}
+        <script type="module" src="{% static 'assets/js/wishlist-page.js' %}"></script>
+    {% endblock %}
+{% endblock %}

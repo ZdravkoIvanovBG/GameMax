@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+    <div id="customAlertMessage" class="alertMessage">
+        <div class="alertMessage-content" id="alertMessageContent">
+            <span class="close" id="closeAlertMessage">&times;</span>
+            <div class="alertMessage-header" id="alertMessageHeader"></div>
+            <div class="alertMessage-body">
+                <p class="text-white" id="alertMessageText"></p>
+            </div>
+        </div>
+    </div>
+
     <div class="single-product section">
         <div class="container">
             <div class="row">
@@ -13,15 +23,21 @@
                 <div class="col-lg-6 align-self-center">
                     <h4 class="text-white">{{ object.title }}</h4>
                     <span class="price">${{ object.price }}</span>
-                    <p>LUGX Gaming Template is based on the latest Bootstrap 5 CSS framework. This template is provided
+                    <p>LUGX Gaming Template is based on the latest Bootstrap 5 CSS framework. This template is
+                        provided
                         by
-                        TemplateMo and it is suitable for your gaming shop ecommerce websites. Feel free to use this for
+                        TemplateMo and it is suitable for your gaming shop ecommerce websites. Feel free to use this
+                        for
                         any
                         purpose. Thank you.</p>
-                    <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD TO
+                    <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD
+                        TO
                         CART
                     </button>
                     <button id="review-btn" class="review-button"><i class="fa-solid fa-star"></i>Submit A Review
+                    </button>
+                    <button type="submit" class="wishlist-btn" id="add-to-wishlist">
+                        <i class="fa fa-heart"></i> Add to Wishlist
                     </button>
                     <ul>
                         <li><span>Game ID:</span> {{ object.game_abbreviation }}</li>
@@ -55,7 +71,8 @@
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link text-white" id="reviews-tab" data-bs-toggle="tab"
                                                 data-bs-target="#reviews"
-                                                type="button" role="tab" aria-controls="reviews" aria-selected="false">
+                                                type="button" role="tab" aria-controls="reviews"
+                                                aria-selected="false">
                                             Reviews ({{ object.review_set.all|length }})
                                         </button>
                                     </li>
@@ -66,7 +83,8 @@
                                      aria-labelledby="description-tab">
                                     <p>{{ object.description }}</p>
                                 </div>
-                                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="tab-pane fade" id="reviews" role="tabpanel"
+                                     aria-labelledby="reviews-tab">
                                     <div class="reviews-panel">
                                         {% for review in object.review_set.all %}
                                             <div class="review-item">
@@ -114,5 +132,6 @@
     {% block extra_script %}
         <script type="module" src="{% static 'assets/js/shopping-cart/cart.js' %}"></script>
         <script type="module" src="{% static 'assets/js/reviews.js' %}"></script>
+        <script type="module" src="{% static 'assets/js/wishlist.js' %}"></script>
     {% endblock %}
 {% endblock %}
