@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'GameMax.home',
     'GameMax.shop',
     'GameMax.orders',
-    'GameMax.reviews'
+    'GameMax.reviews',
+    'GameMax.wishlist'
 ]
 
 UNFOLD = {

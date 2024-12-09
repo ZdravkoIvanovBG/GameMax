@@ -168,10 +168,10 @@
             <img src="{% static 'assets/images/logo.png' %}" alt="Footer Logo">
         </div>
         <nav class="footer-nav">
-            <a href="#">About us</a>
+            <a href="{% url 'about-us' %}">About us</a>
             <a href="{% url 'shop' %}">Shop</a>
             <a href="#">Profile</a>
-            <a href="#">Contact</a>
+            <a href="{% url 'about-us' %}">Contact</a>
         </nav>
     </div>
     <hr class="footer-hr">
@@ -187,8 +187,11 @@
 <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
 <script src="{% static 'assets/js/counter.js' %}"></script>
 <script src="{% static 'assets/js/custom.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
-<script type="module" src="{% static 'assets/js/shopping-cart/cartUI.js' %}"></script>
+
+{% if request.user.is_authenticated %}
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script type="module" src="{% static 'assets/js/shopping-cart/cartUI.js' %}"></script>
+{% endif %}
 
 </body>
 </html>
