@@ -1399,7 +1399,7 @@ h2 {
     grid-gap: 0.5rem;
     font-size: 2rem;
     color: #ffbd13;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .rating .star {
@@ -2606,4 +2606,12 @@ h2 {
 .pay-order-container .cancel-pay-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgb(231, 76, 60, 0.4);
+}
+
+.error-message-reviews {
+    color: red;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }

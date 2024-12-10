@@ -62,6 +62,8 @@ class CartView(RetrieveAPIView):
     request=CartItemSerializer,
 )
 class AddToCartView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, *args, **kwargs):
         game_id = request.data.get('game')
 

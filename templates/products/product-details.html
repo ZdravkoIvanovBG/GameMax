@@ -30,10 +30,20 @@
                         for
                         any
                         purpose. Thank you.</p>
-                    <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD
-                        TO
-                        CART
-                    </button>
+                    {% if request.user.is_authenticated %}
+                        <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD
+                            TO
+                            CART
+                        </button>
+                    {% else %}
+                        <a href="{% url 'login' %}">
+                            <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i>
+                                ADD
+                                TO
+                                CART
+                            </button>
+                        </a>
+                    {% endif %}
                     <button id="review-btn" class="review-button"><i class="fa-solid fa-star"></i>Submit A Review
                     </button>
                     <button type="submit" class="wishlist-btn" id="add-to-wishlist">
@@ -120,6 +130,10 @@
                     <i class='bx bx-star star' style="--i: 3;"></i>
                     <i class='bx bx-star star' style="--i: 4;"></i>
                 </div>
+
+                <div id="errorMessage" style="display:none; color: red; margin-top: 10px;">
+                </div>
+
                 <textarea name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
                 <div class="btn-group">
                     <button type="submit" class="r-btn submit" id="submit-btn">Submit</button>

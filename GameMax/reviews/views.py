@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DeleteView
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from GameMax.reviews.forms import EditReviewForm
@@ -25,11 +26,12 @@ class UserReviewListView(LoginRequiredMixin, ListView):
 class ReviewListView(ListAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-
+    permission_classes = [IsAuthenticated]
 
 class ReviewCreateView(CreateAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         user = request.user.id
@@ -63,21 +65,28 @@ def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
 
     if review.user != request.user:
-        return HttpResponseForbidden
+        return redirect('home')
 
     if request.method == "POST":
         form = EditReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
             return redirect('reviews-page')
+        else:
+            return render(request, 'reviews/edit-review.html', {'form': form, 'review': review})
     else:
         form = EditReviewForm(instance=review)
 
     return render(request, 'reviews/edit-review.html', {'form': form, 'review': review})
 
 
-class DeleteReview(LoginRequiredMixin, DeleteView):
+class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Review
     template_name = 'reviews/delete-review.html'
     pk_url_kwarg = 'review_id'
     success_url = reverse_lazy('reviews-page')
+
+    def test_func(self):
+        review = get_object_or_404(Review, pk=self.kwargs['review_id'])
+
+        return review.user == self.request.user

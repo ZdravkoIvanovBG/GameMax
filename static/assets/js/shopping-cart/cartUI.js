@@ -134,6 +134,11 @@ async function addToCart(gameId) {
             }),
         });
 
+        if (response.status === 401) {
+            window.location.href = '/accounts/login/';
+            return;
+        }
+
         if (!response.ok) {
             throw new Error('Failed to add to cart');
         }
@@ -161,6 +166,11 @@ async function removeFromCart(cartItemId) {
                 'X-CSRFToken': csrfToken,
             },
         });
+
+        if (response.status === 403) {
+            window.location.href = '/accounts/login/';
+            return;
+        }
 
         if (!response.ok) {
             throw new Error('Failed to remove item from cart');

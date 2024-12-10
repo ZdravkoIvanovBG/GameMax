@@ -66,4 +66,5 @@ async function checkout() {
     }
 }
 
+
 export {getCartId, checkout, getCSRFToken, getGameId, getGameSlugFromURL};

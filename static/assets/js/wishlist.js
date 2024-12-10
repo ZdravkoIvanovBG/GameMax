@@ -26,6 +26,11 @@ addToWishlistButton.addEventListener('click', async function () {
             return;
         }
 
+        if (response.status === 403) {
+            window.location.href = '/accounts/login/';
+            return;
+        }
+
         if (!response.ok) {
             throw new Error('Failed to add game to wishlist');
         }
