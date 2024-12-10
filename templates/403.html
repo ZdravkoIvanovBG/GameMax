@@ -1,11 +1,69 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
     <title>Test</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: rgb(28, 28, 28);
+            color: rgb(255, 204, 0);
+            position: relative;
+        }
+
+        .container {
+            position: fixed;
+            top: 41%;
+            left: 42%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: 1px solid #fff;
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
+        }
+
+        img {
+            width: 200px;
+            margin: 0 auto;
+            position: fixed;
+            left: 41.4%;
+            top: 5%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Test</h1>
+<img src="{% static 'assets/images/logo.png' %}" alt="LOGO">
+<div class="container">
+    <h1>FORBIDDEN</h1>
+    <a href="{% url 'home' %}">HOME</a>
+</div>
+
 </body>
 </html>
