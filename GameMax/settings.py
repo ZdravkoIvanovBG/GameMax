@@ -35,7 +35,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 INSTALLED_APPS = [
-    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,38 +55,8 @@ INSTALLED_APPS = [
     'GameMax.wishlist'
 ]
 
-UNFOLD = {
-    "SITE_TITLE": "GAMEMAX Admin",
-    "SITE_HEADER": "GAMEMAX Admin",
-    'BRAND_LOGO': '/static/assets/images/logo.png',
-    'DASHBOARD_STATS': [
-        {
-            'label': 'Users',
-            'model': 'app_users.AppUser',
-            'icon': 'user',
-            'filter': {}
-        },
-        {
-            'label': 'Orders',
-            'model': 'orders.Order',
-            'icon': 'shopping-cart',
-            'filter': {}
-        }
-    ],
-    'CUSTOM_NAV': [
-        {
-            'label': 'Documentation',
-            'url': 'https://docs.djangoproject.com',
-            'icon': 'book'
-        }
-    ]
-}
-
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
 SPECTACULAR_SETTINGS = {

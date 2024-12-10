@@ -3,6 +3,7 @@ from django.http import Http404, JsonResponse
 from django.views.generic import ListView
 from rest_framework import status
 from rest_framework.generics import CreateAPIView, DestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from GameMax.shop.models import Game
@@ -21,6 +22,7 @@ class WishlistPage(LoginRequiredMixin, ListView):
 class WishlistItemCreateView(CreateAPIView):
     queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         user = request.user.id

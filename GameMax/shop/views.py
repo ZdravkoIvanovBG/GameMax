@@ -59,7 +59,7 @@ class CartView(RetrieveAPIView):
 @extend_schema(
     tags=['shop'],
     summary='Add To Cart',
-    request=CartItemSerializer
+    request=CartItemSerializer,
 )
 class AddToCartView(APIView):
     def post(self, request, *args, **kwargs):
