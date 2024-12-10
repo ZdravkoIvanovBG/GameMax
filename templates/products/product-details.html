@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load has_perm %}
 
 {% block content %}
     <div id="customAlertMessage" class="alertMessage">
@@ -103,6 +104,13 @@
                                                     <span class="review-author">{{ review.user.profile.full_name }}</span>
                                                 </div>
                                                 <p class="review-text">{{ review.review_text }}</p>
+                                                {% if request.user|has_permission:'reviews.delete_review' %}
+                                                    <form method="POST"
+                                                          action="{% url 'delete-review' review_id=review.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-primary">Delete Review</button>
+                                                    </form>
+                                                {% endif %}
                                             </div>
                                         {% empty %}
                                             <p class="no-reviews">No reviews yet. Be the first to share your

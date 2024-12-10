@@ -10,8 +10,8 @@ from GameMax.app_users.validators import MaxFileSizeValidator, OnlyLettersDigits
 class AppUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         unique=True,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
         error_messages={
             'unique': "User with this Email already exists."
         }

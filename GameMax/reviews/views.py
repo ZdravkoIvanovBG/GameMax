@@ -28,6 +28,7 @@ class ReviewListView(ListAPIView):
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
 
+
 class ReviewCreateView(CreateAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
@@ -84,9 +85,20 @@ class DeleteReview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Review
     template_name = 'reviews/delete-review.html'
     pk_url_kwarg = 'review_id'
-    success_url = reverse_lazy('reviews-page')
 
     def test_func(self):
         review = get_object_or_404(Review, pk=self.kwargs['review_id'])
 
-        return review.user == self.request.user
+        if review.user == self.request.user or self.request.user.is_staff or self.request.user.has_perm(
+                'reviews.delete_review'):
+            return True
+
+        return False
+
+    def get_success_url(self):
+        review = get_object_or_404(Review, pk=self.kwargs['review_id'])
+
+        if self.request.user.is_staff or self.request.user.has_perm('reviews.delete_review'):
+            return reverse_lazy('game-details', kwargs={'slug': review.game.slug})
+
+        return reverse_lazy('reviews-page')

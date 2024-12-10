@@ -38,7 +38,7 @@ class OnlyLettersDigitsUnderscoresValidator:
     @message.setter
     def message(self, value):
         if value is None:
-            self.__message = "Username must contain only letters, digits, underscores and spaces!"
+            self.__message = "Username must contain only letters, digits and spaces!"
         else:
             self.__message = value
 
