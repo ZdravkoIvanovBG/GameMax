@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="pay-order-body">
+        <div class="pay-order-overlay">
+            <div class="pay-order-container">
+                <div class="payment-box">
+                    <h3>Pay for your order</h3>
+                    <p>Order ID: {{ order.id }}</p>
+                    <p class="order-total-price">Total Price: {{ order.total_price }}</p>
+
+                    <div class="pay-order-buttons">
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn pay-now-button">Pay Now</button>
+                        </form>
+
+                        <a href="{% url 'orders-page' %}" class="btn cancel-pay-button">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

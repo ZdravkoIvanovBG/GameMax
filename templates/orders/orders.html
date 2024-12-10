@@ -11,6 +11,10 @@
                         {% for order in order_list %}
                             <div class="col-md-6">
                                 <div class="order-card">
+                                    {% if not order.paid %}
+                                        <a href="{% url 'cancel-order' order.pk %}" class="cancel-order-btn">Cancel</a>
+                                        <a href="{% url 'pay-order' order.pk %}" class="pay-order-btn">Pay</a>
+                                    {% endif %}
                                     <h5>Order #{{ order.id }}</h5>
                                     <p><strong>Status: </strong><span class="status-badge"
                                                                       data-status="{{ order.status|lower }}">{{ order.status }}</span>

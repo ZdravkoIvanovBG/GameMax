@@ -1,5 +1,8 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DeleteView, UpdateView
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -12,7 +15,7 @@ from GameMax.shop.models import CartItem
 
 class OrderPageView(LoginRequiredMixin, ListView):
     model = Order
-    template_name = 'shop/orders.html'
+    template_name = 'orders/orders.html'
 
     def get_queryset(self):
         return Order.objects.filter(buyer=self.request.user)
@@ -21,6 +24,7 @@ class OrderPageView(LoginRequiredMixin, ListView):
 class OrderCreateView(CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         user = request.user
@@ -47,3 +51,39 @@ class OrderCreateView(CreateAPIView):
         serializer = self.get_serializer(order)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class CancelOrderView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Order
+    template_name = 'orders/cancel-order.html'
+    success_url = reverse_lazy('orders-page')
+
+    def test_func(self):
+        order = get_object_or_404(Order, pk=self.kwargs['pk'])
+
+        return self.request.user == order.buyer
+
+
+class PayOrderView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Order
+    fields = []
+    context_object_name = 'order'
+    template_name = 'orders/pay-order.html'
+
+    def test_func(self):
+        order = get_object_or_404(Order, pk=self.kwargs['pk'])
+
+        return self.request.user == order.buyer
+
+    def post(self, request, *args, **kwargs):
+        order = self.get_object()
+
+        if order.paid:
+            return redirect('home')
+
+        order.paid = True
+        order.status = "Delivered"
+
+        order.save()
+
+        return redirect('orders-page')

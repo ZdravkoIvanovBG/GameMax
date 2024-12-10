@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="cancel-order-body">
+        <div class="delete-review-overlay">
+            <div class="delete-confirmation-container">
+                <div class="confirmation-box">
+                    <h3>Are you sure you want to cancel your order?</h3>
+                    <div class="delete-review-buttons">
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-delete-review">Yes</button>
+                        </form>
+                        <a href="{% url 'orders-page' %}" class="btn btn-delete-review-cancel">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

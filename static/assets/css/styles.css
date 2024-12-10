@@ -855,45 +855,6 @@ Banner Style
 
 /* 
 ---------------------------------------------
-Services Style
---------------------------------------------- 
-*/
-
-.features {
-    margin-top: -80px;
-}
-
-.features .item {
-    padding: 35px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 25px;
-    background-color: #fff;
-    text-align: center;
-}
-
-.features .item h4 {
-    font-size: 17px;
-    margin-top: 25px;
-    text-transform: uppercase;
-}
-
-.features .item .image {
-    width: 90px;
-    height: 90px;
-    display: inline-block;
-    text-align: center;
-    line-height: 90px;
-    background-color: #0071f8;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.features .item:hover .image {
-    background-color: #ee626b;
-}
-
-/* 
----------------------------------------------
 Trending Style
 --------------------------------------------- 
 */
