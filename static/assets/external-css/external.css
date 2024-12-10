@@ -1823,7 +1823,7 @@ h2 {
 .alertMessage {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     left: 50%;
     top: 10%;
     width: 100%;
