@@ -56,53 +56,6 @@
         </div>
     </div>
 
-    <div class="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <a href="#">
-                        <div class="item">
-                            <div class="image">
-                                <img src="{% static 'assets/images/featured-01.png' %}" alt="" style="max-width: 44px;">
-                            </div>
-                            <h4>Events</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="{% url 'shop' %}">
-                        <div class="item">
-                            <div class="image">
-                                <img src="{% static 'assets/images/featured-02.png' %}" alt="" style="max-width: 44px;">
-                            </div>
-                            <h4>Shop</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="#">
-                        <div class="item">
-                            <div class="image">
-                                <img src="{% static 'assets/images/featured-03.png' %}" alt="" style="max-width: 44px;">
-                            </div>
-                            <h4>GAMEMAX Plans</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="#">
-                        <div class="item">
-                            <div class="image">
-                                <img src="{% static 'assets/images/featured-04.png' %}" alt="" style="max-width: 44px;">
-                            </div>
-                            <h4>Gaming Room</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="decorative-line">
         <span class="line"></span>
         <div class="icon">
@@ -179,7 +132,7 @@
                                 <li><span class="fa-li"><i class="fas fa-check"></i></span>24/7 Customer Support</li>
                             </ul>
                             <div class="d-grid">
-                                <a href="#" class="btn btn-primary">Purchase</a>
+                                <a href="#" class="btn btn-primary">Already Purchased ✔️</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +155,7 @@
                                 </li>
                             </ul>
                             <div class="d-grid">
-                                <a href="#" class="btn btn-primary">Purchase</a>
+                                <a href="#" class="btn btn-primary">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -267,12 +220,12 @@
                             <div class="col-lg-12">
                                 <div class="section-heading">
                                     <h6>NEWSLETTER</h6>
-                                    <h2>Get Up To $100 Off Just <em>Subscribe</em> to the Newsletter!</h2>
+                                    <h2>Get Up To $100 Off! Just <em>Subscribe</em> to the Newsletter!</h2>
                                 </div>
                                 <div class="search-input">
-                                    <form id="subscribe" action="#">
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
+                                    <form id="subscribe" action="/subscribe-newsletter/" method="POST">
+                                        {% csrf_token %}
+                                        <input type="email" class="form-control" id="email" name="email"
                                                placeholder="Your email...">
                                         <button type="submit" class="my-color">Subscribe Now</button>
                                     </form>
