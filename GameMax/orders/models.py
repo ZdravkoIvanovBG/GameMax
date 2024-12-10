@@ -38,3 +38,8 @@ class Order(models.Model):
     )
 
     games = models.ManyToManyField(Game)
+
+    def __str__(self):
+        order_id = str(self.id)
+
+        return order_id

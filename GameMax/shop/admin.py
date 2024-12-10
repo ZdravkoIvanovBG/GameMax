@@ -5,7 +5,9 @@ from GameMax.shop.models import Game, Franchise
 
 @admin.register(Franchise)
 class FranchiseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name']
+    ordering = ['name']
+    search_fields = ['name']
 
 
 @admin.register(Game)
