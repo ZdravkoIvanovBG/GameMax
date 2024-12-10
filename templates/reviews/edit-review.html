@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="edit-review-body">
+        <div class="review-edit-overlay" id="overlay">
+            <div class="review-edit-wrapper" id="review-edit-popup">
+                <h3 class="text-white">Edit Your Review</h3>
+                <form action="#" id="edit-review-edit-form" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <div class="edit-btn-group">
+                        <button type="submit" class="r-btn edit-submit">Update Review</button>
+                        <a href="{% url 'reviews-page' %}">
+                            <button type="button" class="r-btn edit-cancel" id="edit-cancel-btn">Cancel</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

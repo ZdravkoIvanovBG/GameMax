@@ -1,9 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DeleteView
 from rest_framework import status
 from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.response import Response
 
+from GameMax.reviews.forms import EditReviewForm
 from GameMax.reviews.models import Review
 from GameMax.reviews.serializers import ReviewSerializer
 from GameMax.shop.models import Game
@@ -51,3 +56,28 @@ class ReviewCreateView(CreateAPIView):
         self.perform_create(serializer)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@login_required
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+
+    if review.user != request.user:
+        return HttpResponseForbidden
+
+    if request.method == "POST":
+        form = EditReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('reviews-page')
+    else:
+        form = EditReviewForm(instance=review)
+
+    return render(request, 'reviews/edit-review.html', {'form': form, 'review': review})
+
+
+class DeleteReview(LoginRequiredMixin, DeleteView):
+    model = Review
+    template_name = 'reviews/delete-review.html'
+    pk_url_kwarg = 'review_id'
+    success_url = reverse_lazy('reviews-page')

@@ -24,6 +24,10 @@
                             <p class="review-text">
                                 {{ review.review_text }}
                             </p>
+                            <div class="review-actions">
+                                <a href="{% url 'edit-review' review_id=review.id %}" class="edit-btn">Edit</a>
+                                <a href="{% url 'delete-review' review_id=review.id %}" class="delete-btn">Delete</a>
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}
