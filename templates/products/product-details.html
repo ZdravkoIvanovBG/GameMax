@@ -108,7 +108,10 @@
                                                     <form method="POST"
                                                           action="{% url 'delete-review' review_id=review.id %}">
                                                         {% csrf_token %}
-                                                        <button type="submit" class="btn btn-primary">Delete Review</button>
+                                                        <button type="submit" class="btn btn-primary"
+                                                                style="position: fixed; top:60%; right:10%; background-color: rgb(226, 72, 26)">
+                                                            Delete Review
+                                                        </button>
                                                     </form>
                                                 {% endif %}
                                             </div>
