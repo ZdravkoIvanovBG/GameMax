@@ -38,6 +38,7 @@ CSRF_TRUSTED_ORIGINS = ["https://gamemax.azurewebsites.net"]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
+    'https://gamemax.azurewebsites.net/',
 ]
 
 INSTALLED_APPS = [
