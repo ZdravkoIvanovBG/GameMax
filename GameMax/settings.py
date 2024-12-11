@@ -24,22 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', config('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG', config('DEBUG')) == "True"
-DEBUG = True
+DEBUG = os.getenv('DEBUG', config('DEBUG')) == "True"
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', config('ALLOWED_HOSTS')).split(',')
-ALLOWED_HOSTS = ["gamemax.azurewebsites.net"]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', config('ALLOWED_HOSTS')).split(',')
 
-CSRF_TRUSTED_ORIGINS = ["https://gamemax.azurewebsites.net"]
-
-# CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', config('CSRF_TRUSTED_ORIGINS', [])).split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', config('CSRF_TRUSTED_ORIGINS', [])).split(',')
 
 # Application definition
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',
-    'https://gamemax.azurewebsites.net/',
-]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,7 +42,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'drf_spectacular',
-    'corsheaders',
     'rangefilter',
 
     'GameMax.app_users',
@@ -73,7 +63,6 @@ SPECTACULAR_SETTINGS = {
 }
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
