@@ -68,12 +68,16 @@ class AddToCartView(APIView):
         game_id = request.data.get('game')
 
         if not game_id:
-            return Response({'error': 'Game ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'error': 'Game ID is required.'
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         try:
             game = Game.objects.get(id=game_id)
         except Game.DoesNotExist:
-            return Response({'error': 'Game Not Found.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({
+                'error': 'Game Not Found.'
+            }, status=status.HTTP_404_NOT_FOUND)
 
         cart, created = Cart.objects.get_or_create(user=request.user)
 

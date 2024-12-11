@@ -40,7 +40,10 @@ class Profile(models.Model):
         null=True,
         blank=False,
         validators=[
-            MinLengthValidator(2, message='Your Name Must Be At Least 2 Characters Long.'),
+            MinLengthValidator(
+                2,
+                message='Your Name Must Be At Least 2 Characters Long.'
+            ),
             OnlyLettersDigitsUnderscoresValidator()
         ]
     )
@@ -57,7 +60,9 @@ class Profile(models.Model):
         null=True,
         blank=True,
         validators=[
-            MinLengthValidator(10, message="Phone Number needs to be 10 characters long.")
+            MinLengthValidator(10,
+                               message="Phone Number needs to be 10 characters long."
+                               )
         ]
     )
 

@@ -29,7 +29,10 @@ class Game(models.Model):
     title = models.CharField(
         max_length=200,
         validators=[
-            MinLengthValidator(5, 'The Title Is At Least 5 Chaacters Long!'),
+            MinLengthValidator(
+                5,
+                'The Title Is At Least 5 Chaacters Long!'
+            ),
         ]
     )
 

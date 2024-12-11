@@ -2615,3 +2615,9 @@ h2 {
     font-weight: 600;
     margin-bottom: 1rem;
 }
+
+#edit-review-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

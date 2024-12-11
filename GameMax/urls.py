@@ -12,7 +12,6 @@ urlpatterns = [
     path('accounts/', include('GameMax.app_users.urls')),
     path('shop/', include('GameMax.shop.urls')),
     path('wishlist/', include('GameMax.wishlist.urls')),
-    # path('interactions/', include('GameMax.interactions.urls')),
     path('orders/', include('GameMax.orders.urls')),
     path('reviews/', include('GameMax.reviews.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
