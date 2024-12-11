@@ -74,7 +74,8 @@
                                              style="background-image: url({{ request.user.profile.profile_picture.url }})">
                                         </div>
                                     {% else %}
-                                        <div class="user-icon"></div>
+                                        <div class="user-icon"
+                                             style="background-image: url({% static 'assets/images/user.png' %})"></div>
                                     {% endif %}
                                 </button>
                                 <div class="menu">
