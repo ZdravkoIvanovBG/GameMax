@@ -98,7 +98,11 @@
                                             <div class="review-item">
                                                 <div class="review-header">
                                                     <span class="review-rating">⭐{{ review.rating }}</span>
-                                                    <span class="review-author">{{ review.user.profile.full_name }}</span>
+                                                    {% if review.user.profile.full_name %}
+                                                        <span class="review-author">{{ review.user.profile.full_name }}</span>
+                                                    {% else %}
+                                                        <span class="review-author">Anonymous</span>
+                                                    {% endif %}
                                                 </div>
                                                 <p class="review-text">{{ review.review_text }}</p>
                                                 {% if request.user|has_permission:'reviews.delete_review' %}
@@ -106,7 +110,7 @@
                                                           action="{% url 'delete-review' review_id=review.id %}">
                                                         {% csrf_token %}
                                                         <button type="submit" class="btn btn-primary"
-                                                                style="position: fixed; top:60%; right:10%; background-color: rgb(226, 72, 26)">
+                                                                style="position: fixed; top:60%; right:7%; background-color: rgb(226, 72, 26)">
                                                             Delete Review
                                                         </button>
                                                     </form>

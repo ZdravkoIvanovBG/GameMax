@@ -75,9 +75,9 @@ def subscribe_newsletter(request):
         print(result.status_code)
 
         if result.status_code == 200:
-            return redirect('contact-us')
+            return redirect('home')
         else:
-            return redirect('about-us')
+            return redirect('contact-us')
 
     return JsonResponse({
         'status': 'error',
