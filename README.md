@@ -51,7 +51,7 @@ A `.env.template` file is included in the repository to help you through the pro
    - `DEBUG`: Set to True for development, False for production.
    - `ALLOWED_HOSTS`: Add your allowed hosts.
    - `CSRF_TRUSTED_ORIGINS`: Add your allowed hosts with http/https://
-   - `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`: Test
+   - `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`: Leave Blank
 
 
 ### Step 4: Install Dependencies
