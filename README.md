@@ -47,10 +47,13 @@ A `.env.template` file is included in the repository to help you through the pro
         from django.core.management.utils import get_random_secret_key
         print(get_random_secret_key())
         ```
+        ```sh
+        exit()
+        ```
    - Database connection settings - `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `HOST`, `PORT`.
    - `DEBUG`: Set to True for development, False for production.
-   - `ALLOWED_HOSTS`: Add your allowed hosts.
-   - `CSRF_TRUSTED_ORIGINS`: Add your allowed hosts with http/https://
+   - `ALLOWED_HOSTS`: Add your allowed hosts. ( Add Default `127.0.0.1` )
+   - `CSRF_TRUSTED_ORIGINS`: Add your allowed hosts with http/https:// ( Add Default `http://127.0.0.1` )
    - `MAILJET_API_KEY`, `MAILJET_SECRET_KEY`: Leave Blank
 
 
