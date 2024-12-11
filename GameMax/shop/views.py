@@ -47,6 +47,7 @@ class GameRetrieveView(RetrieveAPIView):
 
 class CartView(RetrieveAPIView):
     serializer_class = CartSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         user = self.request.user
@@ -94,6 +95,7 @@ class AddToCartView(APIView):
 class RemoveFromCart(DestroyAPIView):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         cart_item_id = self.kwargs['pk']

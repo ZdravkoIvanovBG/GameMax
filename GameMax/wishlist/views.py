@@ -57,6 +57,7 @@ class WishlistItemCreateView(CreateAPIView):
 class RemoveWishlistItemView(DestroyAPIView):
     queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         wishlist_item_id = self.kwargs['pk']
