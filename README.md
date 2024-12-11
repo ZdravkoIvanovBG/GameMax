@@ -1,0 +1,1 @@
+GAMEMAX is an online gaming shop built using Django, offering a seamless platform for users to browse, purchase, and manage their gaming-related products. This website allows users to explore various gaming items, create personalized wishlists, and enjoy a smooth shopping experience powered by a well-designed and user-friendly interface.
