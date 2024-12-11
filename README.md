@@ -38,6 +38,15 @@ A `.env.template` file is included in the repository to help you through the pro
 
 2. Edit the `.env` file and fill in the required values, such as:
    - `SECRET_KEY`: A secret key for Django.
+       - You can generate a `SECRET_KEY` opening the Terminal and using:
+         
+        ```sh
+        python manage.py shell
+        ```
+        ```sh
+        from django.core.management.utils import get_random_secret_key
+        print(get_random_secret_key())
+        ```
    - Database connection settings - `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `HOST`, `PORT`.
    - `DEBUG`: Set to True for development, False for production.
    - `ALLOWED_HOSTS`: Add your allowed hosts.
