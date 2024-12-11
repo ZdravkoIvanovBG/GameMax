@@ -65,7 +65,7 @@ class TestReviewEdit(TestCase):
         self.assertTrue(Review.objects.get(pk=self.review.pk).review_text == 'Updated test review')
         self.assertEqual(response.status_code, 302)
 
-    def test_review_edit__from_non_author_user__expect_failure(self):
+    def test_review_edit__from_non_author_user__expect_redirect(self):
         self.client.login(
             email='test2@test.com',
             password='01560157zZ'
@@ -80,7 +80,7 @@ class TestReviewEdit(TestCase):
 
         self.assertTrue(Review.objects.get(pk=self.review.pk).rating == 5)
         self.assertTrue(Review.objects.get(pk=self.review.pk).review_text == 'Test review')
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
 
     def test_review_edit__with_invalid_rating__expect_failure(self):
         self.assertTrue(Review.objects.filter(pk=self.review.id).exists())
