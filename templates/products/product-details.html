@@ -24,13 +24,10 @@
                 <div class="col-lg-6 align-self-center">
                     <h4 class="text-white">{{ object.title }}</h4>
                     <span class="price">${{ object.price }}</span>
-                    <p>LUGX Gaming Template is based on the latest Bootstrap 5 CSS framework. This template is
-                        provided
-                        by
-                        TemplateMo and it is suitable for your gaming shop ecommerce websites. Feel free to use this
-                        for
-                        any
-                        purpose. Thank you.</p>
+                    <p>Welcome to our gaming paradise, where you can find the latest and greatest titles
+                        like {{ game.title }}. Explore and conquer new worlds with the best games at unbeatable prices.
+                        Your next
+                        adventure starts here!</p>
                     {% if request.user.is_authenticated %}
                         <button type="submit" class="my-color" id="add-to-cart"><i class="fa fa-shopping-bag"></i> ADD
                             TO

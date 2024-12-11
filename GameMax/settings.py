@@ -34,7 +34,6 @@ CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', config('CSRF_TRUSTED_OR
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
-    'https://gamemax.azurewebsites.net/'
 ]
 
 INSTALLED_APPS = [
