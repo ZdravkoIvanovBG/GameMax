@@ -56,14 +56,38 @@ async function checkout() {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to complete checkout');
+            if (response.status === 400) {
+                showCustomAlert('Please add games to the cart!', 'error');
+                return;
+            }
         }
-
         window.location.href = '/orders/';
-    } catch (error) {
-        console.error('Error during checkout: ', error);
-        alert('Checkout failed. Please try again.');
+    } catch
+        (error) {
+        showCustomAlert('Please add games to the cart!', 'error');
     }
+}
+
+function showCustomAlert(message, type) {
+    const customAlertMessage = document.getElementById('customAlertMessage');
+    const alertMessageContent = document.getElementById('alertMessageContent');
+
+    customAlertMessage.style.display = 'flex';
+    document.getElementById('alertMessageText').textContent = message;
+    alertMessageContent.classList.add(type);
+    document.getElementById('alertMessageHeader').textContent = type === 'success' ? 'Success!' : 'Error!';
+
+    alertMessageContent.style.animation = 'none';
+    alertMessageContent.offsetHeight;
+    alertMessageContent.style.animation = 'fadeIn 1s forwards';
+
+    setTimeout(function () {
+        document.getElementById("alertMessageContent").style.animation = "fadeOut 1s forwards";
+    }, 1500);
+
+    document.getElementById("closeAlertMessage").onclick = function () {
+        document.getElementById("customAlertMessage").style.display = "none";
+    };
 }
 
 export {getCartId, checkout, getCSRFToken, getGameId, getGameSlugFromURL};

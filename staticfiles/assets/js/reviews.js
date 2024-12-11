@@ -57,8 +57,12 @@ async function ReviewSubmission() {
 
     const gameId = await getGameId(gameSlug);
 
-    console.log(gameSlug);
-    console.log(gameId);
+    const errorMessageContainer = document.getElementById('errorMessage');
+    errorMessageContainer.style.display = 'none';
+
+    while (errorMessageContainer.firstChild) {
+        errorMessageContainer.removeChild(errorMessageContainer.firstChild)
+    }
 
     try {
         const response = await fetch('/reviews/api/reviews/create/', {
@@ -74,8 +78,27 @@ async function ReviewSubmission() {
             }),
         });
 
+        if (response.status === 403) {
+            window.location.href = '/accounts/login/';
+            return;
+        }
+
         if (!response.ok) {
-            throw new Error('Failed to submit review.');
+            const errorData = await response.json()
+
+            if (errorData['rating'][0]) {
+                errorMessageContainer.style.display = 'block';
+
+                const errorElement = document.createElement('p');
+                errorElement.classList.add('error-message-reviews');
+                errorElement.textContent = "A valid rating is required!";
+
+                errorMessageContainer.appendChild(errorElement);
+
+            } else {
+                throw new Error('Failed to submit review');
+            }
+            return
         }
 
         window.location.href = '/reviews/';
