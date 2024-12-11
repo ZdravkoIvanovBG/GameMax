@@ -63,7 +63,7 @@ python manage.py migrate
 Run the following command to load the data into the database:
 
 ```sh
-python manage.py loaddata shop/fixtures/data.json
+python manage.py loaddata GameMax/shop/fixtures/data.json
 ```
 
 ### Step 7: Create a Superuser
