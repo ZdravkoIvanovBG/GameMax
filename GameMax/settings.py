@@ -160,6 +160,6 @@ LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 
-MAILJET_API_KEY = os.getenv('MAILJET_API_KEY', config('MAILJET_API_KEY'))
+# MAILJET_API_KEY = os.getenv('MAILJET_API_KEY', config('MAILJET_API_KEY'))
 
-MAILJET_SECRET_KEY = os.getenv('MAILJET_SECRET_KEY', config('MAILJET_SECRET_KEY'))
+# MAILJET_SECRET_KEY = os.getenv('MAILJET_SECRET_KEY', config('MAILJET_SECRET_KEY'))
