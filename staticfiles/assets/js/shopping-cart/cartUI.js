@@ -28,7 +28,7 @@ async function fetchCartData() {
 
         const cartData = await response.json();
 
-        await renderCart(cartData.items);
+        renderCart(cartData.items);
         updateCartCount(cartData.items);
         updateTotalPrice(cartData.total_price);
     } catch (error) {
@@ -105,6 +105,54 @@ async function renderCart(cartItems) {
 
     updateCartCount(cartItems);
 }
+
+// async function renderCartItem(cartItem) {
+//     const cartItemsContainer = document.querySelector(".cart-items");
+//
+//     const game = await fetchGameDetails(cartItem.cart_item.game.slug);
+//
+//     const cartItemElement = document.createElement("div");
+//     cartItemElement.classList.add("cart-item");
+//     cartItemElement.setAttribute("data-id", cartItem.id);
+//
+//     const itemImage = document.createElement("img");
+//     itemImage.src = game.game_image;
+//     itemImage.alt = `${game.title} Thumbnail`;
+//     itemImage.classList.add("cart-item-image");
+//
+//     const itemDetails = document.createElement("div");
+//     itemDetails.classList.add("cart-item-details");
+//
+//     const itemTitle = document.createElement("h4");
+//     itemTitle.classList.add("cart-item-title");
+//     itemTitle.textContent = game.title;
+//
+//     const removeLink = document.createElement("a");
+//     removeLink.href = "#";
+//     removeLink.classList.add("cart-item-remove");
+//     removeLink.textContent = "Remove";
+//     removeLink.addEventListener("click", () => removeFromCart(cartItem.id));
+//
+//     itemDetails.appendChild(itemTitle);
+//     itemDetails.appendChild(removeLink);
+//
+//     const itemGenre = document.createElement("div");
+//     itemGenre.classList.add("cart-item-genre");
+//     itemGenre.textContent = game.genre;
+//
+//     const itemPrice = document.createElement("div");
+//     itemPrice.classList.add("cart-item-price");
+//     itemPrice.textContent = `$${game.price}`;
+//
+//     cartItemElement.appendChild(itemImage);
+//     cartItemElement.appendChild(itemDetails);
+//     cartItemElement.appendChild(itemGenre);
+//     cartItemElement.appendChild(itemPrice);
+//
+//     cartItemsContainer.appendChild(cartItemElement);
+//
+//     updateCartCount([cartItem]);
+// }
 
 async function addToCart(gameId) {
     const cartId = await getCartId();
