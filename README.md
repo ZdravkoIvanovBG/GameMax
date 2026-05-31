@@ -1,4 +1,11 @@
 # 🎮 GAMEMAX
+
+### 🔗 [Live Link](https://gamemax.onrender.com/) 
+
+A Django-based application that allows users to browse and buy video games across various franchises. Users can register, login, add to cart, submit reviews, add to wishlist, manage orders and more.
+
+> ⏳ **Note on Free Hosting:** This app is hosted on a free tier (e.g., Render/Railway). If the page takes 30–60 seconds to load initially, the server is just waking up from its "sleep" cycle. Thank you for your patience!
+
 ### A Django-based application that allows users to browse and buy video games across various franchises. Users can register, login, add to cart, submit reviews, add to wishlist, manage orders and more.
 
 # Project Setup Instructions
